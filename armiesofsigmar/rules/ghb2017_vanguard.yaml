@@ -1,0 +1,12 @@
+{
+points : 1000,
+
+units :
+{
+  Leader: { min: 1, max: 4 },
+  Battleline: { min: 2, max: -1 },
+  Artillery: { min: 0, max: 2 },
+  Behemoth: { min: 0, max: 2 },
+}
+
+}

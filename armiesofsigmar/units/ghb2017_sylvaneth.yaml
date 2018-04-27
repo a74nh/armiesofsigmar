@@ -1,0 +1,26 @@
+ 
+sylvaneth: [
+
+{ name: Dryads, points: 100, unitsize: 10, roles: [Battleline], keywords : [ORDER, SYLVANETH, DRYADS] },
+{ name: Dryads Max, points: 270, unitsize: 30, roles: [Battleline], keywords : [ORDER, SYLVANETH, DRYADS]  },
+{ name: Treelord, points: 240, unitsize: 10, roles: [Behemoth], keywords : [ORDER, SYLVANETH, MONSTER, TREELORD]  },
+{ name: Branchwraith, points: 80, unitsize: 1, roles: [Leader], keywords : [ORDER, SYLVANETH, HERO, WIZARD, BRANCHWRAITH]  },
+{ name: Branchwych, points: 80, unitsize: 1, roles: [Leader], keywords : [ORDER, SYLVANETH, HERO, WIZARD, BRANCHWYCH]  },
+
+{ name: Alarielle the Everqueen, points: 600, unitsize: 1, roles: [Leader, Behemoth], unique: True, keywords : [ORDER, SYLVANETH, MONSTER, HERO, WIZARD, ALARIELLE THE EVERQUEEN]  },
+{ name: Drycha Hamadreth, points: 280, unitsize: 1, roles: [Leader, Behemoth], unique: True, keywords : [ORDER, SYLVANETH, MONSTER, HERO, WIZARD, DRYCHA HAMADRETH]  },
+{ name: Spirit of Durthu, points: 400, unitsize: 1, roles: [Leader, Behemoth], keywords : [ORDER, SYLVANETH, MONSTER, HERO, SPIRIT OF DURTHU]  },
+{ name: Treelord Ancient, points: 300, unitsize: 1, roles: [Leader, Behemoth], keywords : [ORDER, SYLVANETH, MONSTER, HERO, WIZARD, TREELORD ANCIENT]  },
+{ name: Kurnoth Hunters, points: 220, unitsize: 2, roles: [], keywords : [ORDER, SYLVANETH, KURNOTH HUNTERS]  },
+
+{ name: Tree-Revenants, points: 80, unitsize: 5, roles: [Battleline], keywords : [SYLVANETH, TREE-REVENANTS]  },
+{ name: Tree-Revenants Max, points: 420, unitsize: 30, roles: [Battleline], keywords : [SYLVANETH, TREE-REVENANTS]  },
+{ name: Tree-Revenants Order, points: 80, unitsize: 5, roles: [], keywords : [ORDER, TREE-REVENANTS]  },
+{ name: Tree-Revenants Order Max, points: 420, unitsize: 30, roles: [], keywords : [ORDER, TREE-REVENANTS]  },
+
+{ name: Spite-Revenants, points: 80, unitsize: 5, roles: [Battleline], keywords : [SYLVANETH, SPITE-REVENANTS]  },
+{ name: Spite-Revenants Max, points: 420, unitsize: 30, roles: [Battleline], keywords : [SYLVANETH, SPITE-REVENANTS]  },
+{ name: Spite-Revenants Order, points: 80, unitsize: 5, roles: [], keywords : [ORDER, SPITE-REVENANTS]  },
+{ name: Spite-Revenants Order Max, points: 420, unitsize: 30, roles: [], keywords : [ORDER, SPITE-REVENANTS]  },
+
+]
