@@ -24,9 +24,9 @@ units:
   Spirit of Durthu : { min: 0, max: 1 },
 
   #Allow any of these
-  Tree-Revenants : { min: 0, max: -1 },
+  Tree-Revenants : { min: 0, max: 2 },
   Alarielle the Everqueen : { min: 0, max: -1 },
-  Drycha Hamadreth : { min: 0, max: -1 },
+  Drycha Hamadreth : { min: 0, max: 0 },
   Kurnoth Hunters : { min: 0, max: -1 },
 
   #No thanks to these
@@ -34,9 +34,9 @@ units:
   Spite-Revenants : { min: 0, max: 0 },
 
   #Used to represent the cheaper version of a unit at maximum size
-  Spite-Revenants Max : { min: 0, max: 0 },
-  Tree-Revenants Max : { min: 0, max: 0 },
-  Dryads Max : { min: 0, max: 0 },
+  30 Spite-Revenants : { min: 0, max: 0 },
+  30 Tree-Revenants : { min: 0, max: 0 },
+  30 Dryads : { min: 0, max: 0 },
 
   #Special keyword. Matches all units not listed above.
   __Others : { min: 0, max: -1 },
