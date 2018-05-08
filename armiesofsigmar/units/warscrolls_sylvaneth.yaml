@@ -1,26 +1,41 @@
  
-sylvaneth: [
+sylvaneth:
+  - name: Dryads
+    keywords : [ORDER, SYLVANETH, DRYADS]
+  - name: 30 Dryads
+    keywords : [ORDER, SYLVANETH, DRYADS]
+  - name: Treelord
+    keywords: [ORDER, SYLVANETH, MONSTER, TREELORD]
+  - name: Branchwraith
+    keywords: [ORDER, SYLVANETH, HERO, WIZARD, BRANCHWRAITH]
+  - name: Branchwych
+    keywords: [ORDER, SYLVANETH, HERO, WIZARD, BRANCHWYCH]
 
-{ name: Dryads, keywords : [ORDER, SYLVANETH, DRYADS] },
-{ name: 30 Dryads, keywords : [ORDER, SYLVANETH, DRYADS]  },
-{ name: Treelord, keywords : [ORDER, SYLVANETH, MONSTER, TREELORD]  },
-{ name: Branchwraith, keywords : [ORDER, SYLVANETH, HERO, WIZARD, BRANCHWRAITH]  },
-{ name: Branchwych, keywords : [ORDER, SYLVANETH, HERO, WIZARD, BRANCHWYCH]  },
+  - name: Alarielle the Everqueen
+    keywords: [ORDER, SYLVANETH, MONSTER, HERO, WIZARD, ALARIELLE THE EVERQUEEN]
+  - name: Drycha Hamadreth
+    keywords: [ORDER, SYLVANETH, MONSTER, HERO, WIZARD, DRYCHA HAMADRETH]
+  - name: Spirit of Durthu
+    keywords: [ORDER, SYLVANETH, MONSTER, HERO, SPIRIT OF DURTHU]
+  - name: Treelord Ancient
+    keywords: [ORDER, SYLVANETH, MONSTER, HERO, WIZARD, TREELORD ANCIENT]
+  - name: Kurnoth Hunters
+    keywords: [ORDER, SYLVANETH, KURNOTH HUNTERS]
 
-{ name: Alarielle the Everqueen, keywords : [ORDER, SYLVANETH, MONSTER, HERO, WIZARD, ALARIELLE THE EVERQUEEN]  },
-{ name: Drycha Hamadreth, keywords : [ORDER, SYLVANETH, MONSTER, HERO, WIZARD, DRYCHA HAMADRETH]  },
-{ name: Spirit of Durthu, keywords : [ORDER, SYLVANETH, MONSTER, HERO, SPIRIT OF DURTHU]  },
-{ name: Treelord Ancient, keywords : [ORDER, SYLVANETH, MONSTER, HERO, WIZARD, TREELORD ANCIENT]  },
-{ name: Kurnoth Hunters, keywords : [ORDER, SYLVANETH, KURNOTH HUNTERS]  },
+  - name: Tree-Revenants
+    keywords: [SYLVANETH, TREE-REVENANTS]
+  - name: 30 Tree-Revenants
+    keywords: [SYLVANETH, TREE-REVENANTS]
+  - name: Tree-Revenants Order
+    keywords: [ORDER, TREE-REVENANTS]
+  - name: 30 Tree-Revenants Order
+    keywords: [ORDER, TREE-REVENANTS]
 
-{ name: Tree-Revenants, keywords : [SYLVANETH, TREE-REVENANTS]  },
-{ name: 30 Tree-Revenants, keywords : [SYLVANETH, TREE-REVENANTS]  },
-{ name: Tree-Revenants Order, keywords : [ORDER, TREE-REVENANTS]  },
-{ name: 30 Tree-Revenants Order, keywords : [ORDER, TREE-REVENANTS]  },
-
-{ name: Spite-Revenants, keywords : [SYLVANETH, SPITE-REVENANTS]  },
-{ name: 30 Spite-Revenants, keywords : [SYLVANETH, SPITE-REVENANTS]  },
-{ name: Spite-Revenants Order, keywords : [ORDER, SPITE-REVENANTS]  },
-{ name: 30 Spite-Revenants Order, keywords : [ORDER, SPITE-REVENANTS]  },
-
-]
+  - name: Spite-Revenants
+    keywords: [SYLVANETH, SPITE-REVENANTS]
+  - name: 30 Spite-Revenants
+    keywords: [SYLVANETH, SPITE-REVENANTS]
+  - name: Spite-Revenants Order
+    keywords: [ORDER, SPITE-REVENANTS]
+  - name: 30 Spite-Revenants Order
+    keywords: [ORDER, SPITE-REVENANTS]

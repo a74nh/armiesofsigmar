@@ -1,45 +1,43 @@
-{
+
 #Which rulesets. Use vanguard, battlehost, warhost or freeforall (no restrictions)
-rulebook: ghb2017,
-size: vanguard,
+rulebook: ghb2017
+size: vanguard
 
 #List of units to use. Either a grand alliance (eg: order) or faction (eg: sylvaneth)
-unitlists: [sylvaneth],
+unitlists: [sylvaneth]
 
 #Only allow units with the following keywords
-keywords: [SYLVANETH],
+keywords: [SYLVANETH]
 
 #Min and max points allowed for the armies
-min_points: 980,
-max_points: 1000,
+min_points: 980
+max_points: 1000
 
 #Allow or exclude specific named units. Use -1 for no maximum.
 units:
-{
   #Allow no more than two getting started sylvaneth boxes (where one of the treelords is an Ancient Treelord)
-  Dryads : { min: 0, max: 2 },
-  Branchwych : { min: 0, max: 2 },
-  Treelord Ancient : { min: 1, max: 2 },
-  Treelord : { min: 0, max: 1 },
-  Spirit of Durthu : { min: 0, max: 1 },
+  Dryads : { min: 0, max: 2 }
+  Branchwych : { min: 0, max: 2 }
+  Treelord Ancient : { min: 1, max: 2 }
+  Treelord : { min: 0, max: 1 }
+  Spirit of Durthu : { min: 0, max: 1 }
 
   #Allow any of these
-  Tree-Revenants : { min: 0, max: 2 },
-  Alarielle the Everqueen : { min: 0, max: -1 },
-  Drycha Hamadreth : { min: 0, max: 0 },
-  Kurnoth Hunters : { min: 0, max: -1 },
+  Tree-Revenants : { min: 0, max: 2 }
+  Alarielle the Everqueen : { min: 0, max: -1 }
+  Drycha Hamadreth : { min: 0, max: 0 }
+  Kurnoth Hunters : { min: 0, max: -1 }
 
   #No thanks to these
-  Branchwraith : { min: 0, max: 0 },
-  Spite-Revenants : { min: 0, max: 0 },
+  Branchwraith : { min: 0, max: 0 }
+  Spite-Revenants : { min: 0, max: 0 }
 
   #Used to represent the cheaper version of a unit at maximum size
-  30 Spite-Revenants : { min: 0, max: 0 },
-  30 Tree-Revenants : { min: 0, max: 0 },
-  30 Dryads : { min: 0, max: 0 },
+  30 Spite-Revenants : { min: 0, max: 0 }
+  30 Tree-Revenants : { min: 0, max: 0 }
+  30 Dryads : { min: 0, max: 0 }
 
   #Special keyword. Matches all units not listed above.
-  __Others : { min: 0, max: -1 },
-}
+  __Others : { min: 0, max: -1 }
 
-}
+
