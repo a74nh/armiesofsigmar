@@ -8,8 +8,8 @@ Either use as a python module or run main.py with a yaml config file.
 * Add configs for missing factions (see armiesofsigmar/units/)
 * No support for allies
 * No support for battalions
-* Better support for special Battleline alligence (currently supported as two different unit types)
-* Better support for special cheaper maximum unit sizes (currently supported as two different unit types)
+* Maybe better support for special Battleline alligence (currently supported as two different unit types)
+* Maybe better support for special cheaper maximum unit sizes (currently supported as two different unit types)
 
 
 ## Example
@@ -48,3 +48,15 @@ This generate all valid 1000 point (minimum 980) Sylvaneth armies using no more 
     1000:  2*Treelord Ancient(300), 5*Tree-Revenants(80)
     980:  2*Kurnoth Hunters(220), Treelord Ancient(300), 3*Tree-Revenants(80)
     1000:  Kurnoth Hunters(220), Treelord Ancient(300), 6*Tree-Revenants(80)
+
+
+### Python Example
+
+	from armiesofsigmar import ArmyGenerator, load_restictions
+
+	restrict_config = load_restictions("sylvaneth_example.yaml")
+	gen = ArmyGenerator(restrict_config)
+	armies = gen.generate_army()
+
+	for army in armies:
+	    print army
