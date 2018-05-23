@@ -54,8 +54,15 @@ class Unit(object):
     def keywords(self):
         return self.unit_config.get("keywords", [])
 
-    def move(self):
-        return self.unit_config.get("move", 0)
+    def move(self, wounds_suffered=0):
+        move = self.unit_config.get("move", 0)
+        if type(move) is not dict:
+            return move
+        if wounds_suffered > self.wounds():
+            wounds_suffered = self.wounds()
+        while wounds_suffered > 0 and move.get(wounds_suffered, None) == None:
+            wounds_suffered = wounds_suffered - 1
+        return "{}*".format(move.get(wounds_suffered, 0))
 
     def wounds(self):
         return self.unit_config.get("wounds", 0) * self.count

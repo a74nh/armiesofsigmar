@@ -3,7 +3,7 @@ sylvaneth:
 
   - name: Alarielle the Everqueen
     keywords: [ORDER, SYLVANETH, MONSTER, HERO, WIZARD, ALARIELLE THE EVERQUEEN]
-    move: x
+    move: { 0: 16, 5: 14, 8: 10, 11: 8, 14: 6}
     wounds: 16
     save: 3
     bravery: 10
