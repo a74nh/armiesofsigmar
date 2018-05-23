@@ -13,6 +13,10 @@ keywords: [SYLVANETH]
 min_points: 980
 max_points: 1000
 
+#Min and max wounds allowed for the armies. Use -1 for no maximum.
+min_wounds: 0
+max_wounds: -1
+
 #Allow or exclude specific named units. Use -1 for no maximum.
 units:
   #Allow no more than two getting started sylvaneth boxes (where one of the treelords is an Ancient Treelord)

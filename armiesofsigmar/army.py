@@ -68,9 +68,18 @@ class Army(object):
         points = self.points()
         if points > max_points or ( final and points < min_points):
             if showfails.value > PrintOption.SILENT.value:
-                print "FAIL maxpoints {} {} {} : {}".format(points, min_points, max_points, self)
+                print "FAIL points {} {} {} : {}".format(points, min_points, max_points, self)
             return False
         
+        #Check wounds
+        min_wounds = restrict_config.get("min_wounds", 0)
+        max_wounds = restrict_config.get("max_wounds", -1)
+        wounds = self.wounds()
+        if (wounds > max_wounds and max_wounds != -1) or ( final and wounds < min_wounds):
+            if showfails.value > PrintOption.SILENT.value:
+                print "FAIL wounds {} {} {} : {}".format(wounds, min_wounds, max_wounds, self)
+            return False
+
         #Create empty rules dict
         rules_check = {}
         for rulename, ruleactions in rules_config["units"].iteritems():
