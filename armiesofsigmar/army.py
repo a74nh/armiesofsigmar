@@ -25,7 +25,8 @@ class Army(object):
 
     def fullstr(self):
         unitline = []
-        line = [("Points {}, Wounds {}".format(self.points(), self.wounds()))]
+        line = [("Points {}".format(self.points()))]
+        line.append("Wounds {}, Bravery/Unit: {:.2f}, Save/Wound: {:.2f}+".format(self.wounds(), self.avg_bravery_per_unit(), self.avg_save_per_wound()))
         for unit in self.units:
             unitstr = unit.fullstr()
             if len(unitstr) > 0:
@@ -60,6 +61,22 @@ class Army(object):
         for unit in self.units:
             wounds = wounds + unit.wounds()
         return wounds
+
+    def avg_bravery_per_unit(self):
+        avg_bravery = 0
+        count = 0
+        for unit in self.units:
+            count = count + unit.unitsize()
+            avg_bravery = avg_bravery + (unit.unitsize() * unit.bravery())
+        return avg_bravery / float(count)
+
+    def avg_save_per_wound(self):
+        avg_save = 0
+        count = 0
+        for unit in self.units:
+            count = count + (unit.unitsize() * unit.wounds())
+            avg_save = avg_save + (unit.unitsize() * unit.wounds() * unit.save())
+        return avg_save / float(count)
 
     def is_valid(self, rules_config, restrict_config, final=True, showfails=PrintOption.SILENT):
         #Check points

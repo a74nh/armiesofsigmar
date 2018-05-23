@@ -28,7 +28,7 @@ class Unit(object):
         ret.append("\t{} {}".format(self.unitsize(), self.name()))
         ret.append("\t\tPoints: {}".format(self.points()))
         ret.append("\t\tRoles: {}".format(", ".join(self.roles())))
-        ret.append("\t\tM/W/S/B: {}/{}/{}/{}".format(self.move(), self.wounds(), self.save(), self.bravery()))
+        ret.append("\t\tM/W/S/B: {}/{}/{}+/{}".format(self.move(), self.wounds(), self.save(), self.bravery()))
         return "\n".join(ret)
 
     def inc(self, num):
@@ -61,7 +61,7 @@ class Unit(object):
         return self.unit_config.get("wounds", 0) * self.count
 
     def save(self):
-        return str(self.unit_config.get("save", 0))+"+"
+        return self.unit_config.get("save", 0)
 
     def bravery(self):
         return self.unit_config.get("bravery", 0)
