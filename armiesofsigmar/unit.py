@@ -25,12 +25,11 @@ class Unit(object):
         ret = []
         if self.count == 0:
             return ""
-        ret.append("\t{}".format(self.name()))
+        ret.append("\t{} {}".format(self.unitsize(), self.name()))
         ret.append("\t\tPoints: {}".format(self.points()))
-        ret.append("\t\tUnit size: {}".format(self.unitsize()))
         ret.append("\t\tRoles: {}".format(", ".join(self.roles())))
+        ret.append("\t\tM/W/S/B: {}/{}/{}/{}".format(self.move(), self.wounds(), self.save(), self.bravery()))
         return "\n".join(ret)
-
 
     def inc(self, num):
         self.count = self.count + num
@@ -54,3 +53,15 @@ class Unit(object):
 
     def keywords(self):
         return self.unit_config.get("keywords", [])
+
+    def move(self):
+        return self.unit_config.get("move", 0)
+
+    def wounds(self):
+        return self.unit_config.get("wounds", 0) * self.count
+
+    def save(self):
+        return str(self.unit_config.get("save", 0))+"+"
+
+    def bravery(self):
+        return self.unit_config.get("bravery", 0)

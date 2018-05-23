@@ -11,9 +11,8 @@ class Army(object):
             self.units.append(Unit(c))
 
     def __str__(self):
-        points = self.count_points()
         unitline = []
-        line = [("{}: ".format(points))]
+        line = [("{}: ".format(self.points()))]
         for unit in self.units:
             unitstr = str(unit)
             if len(unitstr) > 0:
@@ -25,9 +24,8 @@ class Army(object):
         return str(self.units)
 
     def fullstr(self):
-        points = self.count_points()
         unitline = []
-        line = [("{}: ".format(points))]
+        line = [("Points {}, Wounds {}".format(self.points(), self.wounds()))]
         for unit in self.units:
             unitstr = unit.fullstr()
             if len(unitstr) > 0:
@@ -51,17 +49,23 @@ class Army(object):
     def indexValid(self,index):
         return index >= 0  and index < len(self.units)
 
-    def count_points(self):
+    def points(self):
         points = 0
         for unit in self.units:
             points = points + unit.points()
         return points
 
+    def wounds(self):
+        wounds = 0
+        for unit in self.units:
+            wounds = wounds + unit.wounds()
+        return wounds
+
     def is_valid(self, rules_config, restrict_config, final=True, showfails=PrintOption.SILENT):
         #Check points
         min_points = restrict_config.get("min_points", rules_config["points"])
         max_points = restrict_config.get("max_points", rules_config["points"])
-        points = self.count_points()
+        points = self.points()
         if points > max_points or ( final and points < min_points):
             if showfails.value > PrintOption.SILENT.value:
                 print "FAIL maxpoints {} {} {} : {}".format(points, min_points, max_points, self)

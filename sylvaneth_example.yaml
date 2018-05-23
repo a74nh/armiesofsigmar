@@ -23,7 +23,7 @@ units:
   Spirit of Durthu : { min: 0, max: 1 }
 
   #Allow any of these
-  Tree-Revenants : { min: 0, max: 2 }
+  Tree-Revenants : { min: 0, max: 1 }
   Alarielle the Everqueen : { min: 0, max: -1 }
   Drycha Hamadreth : { min: 0, max: 0 }
   Kurnoth Hunters : { min: 0, max: -1 }
