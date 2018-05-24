@@ -1,9 +1,18 @@
 import re
 
+# A unit consists of a number of instances of a single model.
+
 class Unit(object):
 
     def __init__(self, unit_config):
+        # Dictionary holding all the stats for a unit
         self.unit_config = unit_config
+        # The number of multiples of a minimum sized unit.
+        # For example, Drayds has a minimum unit size of 10.
+        # Therefore, 20 Dryads would have a count of 2.
+        # Technically, you could have 18 Dryads in a unit, but
+        # the cost would still be the same as 20. Therefore this
+        # system disallows that.
         self.count = 0
 
     def __str__(self):
@@ -28,18 +37,25 @@ class Unit(object):
         ret.append("\t{} {}".format(self.unitsize(), self.name()))
         ret.append("\t\tPoints: {}".format(self.points()))
         ret.append("\t\tRoles: {}".format(", ".join(self.roles())))
-        ret.append("\t\tM/W/S/B: {}/{}/{}+/{}".format(self.move(), self.wounds(), self.save(), self.bravery()))
+        ret.append("\t\tM/W/S/B: {}/{}/{}/{}".format(self.move(),
+                                                    self.wounds_str(),
+                                                    self.save_str(),
+                                                    self.bravery()))
         return "\n".join(ret)
 
+    # Increase the multiples of minimum size in the unit
     def inc(self, num):
         self.count = self.count + num
         if self.count < 0:
             self.count = 0
 
+    # The number of individual figures in the unit.
+    # Always a multiple of unit minimum size.
     def unitsize(self):
         return self.unit_config["min"] * self.count
 
     def points(self):
+        # Config points are per minimum unit
         return self.unit_config["points"] * self.count
 
     def name(self):
@@ -58,17 +74,36 @@ class Unit(object):
         move = self.unit_config.get("move", 0)
         if type(move) is not dict:
             return move
-        if wounds_suffered > self.wounds():
-            wounds_suffered = self.wounds()
+        if wounds_suffered > self.wounds_per_unit():
+            wounds_suffered = self.wounds_per_unit()
         while wounds_suffered > 0 and move.get(wounds_suffered, None) == None:
             wounds_suffered = wounds_suffered - 1
         return "{}*".format(move.get(wounds_suffered, 0))
 
-    def wounds(self):
-        return self.unit_config.get("wounds", 0) * self.count
+    def wounds_per_unit(self):
+        return self.unit_config.get("wounds", 0)
+
+    # Total number of wounds across all units
+    def total_wounds(self):
+        return self.wounds_per_unit() * self.unitsize()
+
+    def wounds_str(self):
+        wounds = self.wounds_per_unit()
+        if self.unitsize() == 1:
+            return str(wounds)
+        return "{}({})".format(wounds, wounds * self.unitsize())
 
     def save(self):
-        return self.unit_config.get("save", 0)
+        save = self.unit_config.get("save", 0)
+        if type(save) is str and save == "-":
+            return 6
+        return save
+
+    def save_str(self):
+        save = self.unit_config.get("save", 0)
+        if type(save) is str:
+            return save
+        return "{}+".format(save)
 
     def bravery(self):
         return self.unit_config.get("bravery", 0)

@@ -59,7 +59,7 @@ class Army(object):
     def wounds(self):
         wounds = 0
         for unit in self.units:
-            wounds = wounds + unit.wounds()
+            wounds = wounds + unit.total_wounds()
         return wounds
 
     def avg_bravery_per_unit(self):
@@ -74,8 +74,8 @@ class Army(object):
         avg_save = 0
         count = 0
         for unit in self.units:
-            count = count + (unit.unitsize() * unit.wounds())
-            avg_save = avg_save + (unit.unitsize() * unit.wounds() * unit.save())
+            count = count + unit.total_wounds()
+            avg_save = avg_save + (unit.total_wounds() * unit.save())
         return avg_save / float(count)
 
     def is_valid(self, rules_config, restrict_config, final=True, showfails=PrintOption.SILENT):
