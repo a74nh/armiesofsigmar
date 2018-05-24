@@ -17,6 +17,10 @@ max_points: 1000
 min_wounds: 55
 max_wounds: -1
 
+#Min and max models allowed for the armies. Use -1 for no maximum.
+min_models: 0
+max_models: -1
+
 #Allow or exclude specific named units. Use -1 for no maximum.
 units:
 

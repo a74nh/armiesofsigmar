@@ -26,7 +26,11 @@ class Army(object):
     def fullstr(self):
         unitline = []
         line = [("Points {}".format(self.points()))]
-        line.append("Wounds {}, Bravery/Unit: {:.2f}, Save/Wound: {:.2f}+".format(self.wounds(), self.avg_bravery_per_unit(), self.avg_save_per_wound()))
+        line.append("Wounds: {}, Models: {}, Bravery/Unit: {:.2f}, Save/Wound: {:.2f}+".format(
+                                self.wounds(),
+                                self.unitsize(),
+                                self.avg_bravery_per_unit(),
+                                self.avg_save_per_wound()))
         for unit in self.units:
             unitstr = unit.fullstr()
             if len(unitstr) > 0:
@@ -56,6 +60,12 @@ class Army(object):
             points = points + unit.points()
         return points
 
+    def unitsize(self):
+        size = 0
+        for unit in self.units:
+            size = size + unit.unitsize()
+        return size
+
     def wounds(self):
         wounds = 0
         for unit in self.units:
@@ -78,23 +88,24 @@ class Army(object):
             avg_save = avg_save + (unit.total_wounds() * unit.save())
         return avg_save / float(count)
 
-    def is_valid(self, rules_config, restrict_config, final=True, showfails=PrintOption.SILENT):
-        #Check points
-        min_points = restrict_config.get("min_points", rules_config["points"])
-        max_points = restrict_config.get("max_points", rules_config["points"])
-        points = self.points()
-        if points > max_points or ( final and points < min_points):
+
+    def __check_min_max(self, constraint, current_value, default_min, default_max, restrict_config, final, showfails):
+        con_min = restrict_config.get("min_"+constraint, default_min)
+        con_max = restrict_config.get("max_"+constraint, default_max)
+
+        if (current_value > con_max and con_max != -1) or ( final and current_value < con_min):
             if showfails.value > PrintOption.SILENT.value:
-                print "FAIL points {} {} {} : {}".format(points, min_points, max_points, self)
+                print "FAIL {}: {} {}->{} : {}".format(constraint, current_value, con_min, con_max, self)
             return False
+        return True
+
+    def is_valid(self, rules_config, restrict_config, final=True, showfails=PrintOption.SILENT):
         
-        #Check wounds
-        min_wounds = restrict_config.get("min_wounds", 0)
-        max_wounds = restrict_config.get("max_wounds", -1)
-        wounds = self.wounds()
-        if (wounds > max_wounds and max_wounds != -1) or ( final and wounds < min_wounds):
-            if showfails.value > PrintOption.SILENT.value:
-                print "FAIL wounds {} {} {} : {}".format(wounds, min_wounds, max_wounds, self)
+        if not self.__check_min_max("points", self.points(), rules_config["points"], rules_config["points"], restrict_config, final, showfails):
+            return False
+        if not self.__check_min_max("wounds", self.wounds(), 0, -1, restrict_config, final, showfails):
+            return False
+        if not self.__check_min_max("models", self.unitsize(), 0, -1, restrict_config, final, showfails):
             return False
 
         #Create empty rules dict
