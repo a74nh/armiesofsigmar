@@ -1,70 +1,239 @@
  
 stormcast eternals :
 
- - name: Liberators
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: 30 Liberators
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Celestant-Prime Hammer of Sigmar
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Knight-Azyros
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Knight-Heraldor
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Knight-Questor
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Knight-Venator
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Knight-Vexillor
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Lord-Aquilor
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Lord-Castellant
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Lord-Celestant
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Lord-Celestant on Dracoth
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Lord-Relictor
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Lord-Veritant
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Vandus Hammerhand
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Drakesworn Templar
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Lord-Celestant on Stardrake
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Aetherwings
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Concussors
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Decimators
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Desolators
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Fulminators
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Gryph-hounds
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Judicators
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Prosecutors with Celestial Hammers
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Prosecutors with Stormcall Javelins
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Protectors
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Retributors
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Tempestors
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Vanguard-Hunters
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Vanguard-Palladors
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Vanguard-Raptors with Hurricane Crossbows
-   keywords: [ORDER, STORMCAST ETERNALS]
- - name: Vanguard-Raptors with Longstrike Crossbows
-   keywords: [ORDER, STORMCAST ETERNALS]
+  - name: Celestant-Prime Hammer of Sigmar
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, HERO, CELESTANT-PRIME]
+    move: 12
+    wounds: 8
+    save: 3
+    bravery: 10
+
+  - name: Lord-Celestant on Dracoth
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, HERO, LORD-CELESTANT]
+    move: 10
+    wounds: 7
+    save: 3
+    bravery: 9 
+
+  - name: Lord-Celestant
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, HERO, LORD-CELESTANT]
+    move: 5
+    wounds: 5
+    save: 3
+    bravery: 9
+
+  - name: Lord-Relictor
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, HERO, PRIEST, LORD-RELICTOR]
+    move: 4
+    wounds: 5 
+    save: 3
+    bravery: 9
+
+  - name: Lord-Castellant
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, HERO, LORD-CASTELLANT]
+    move: 5
+    wounds: 6
+    save: 3
+    bravery: 9
+
+  - name: Lord-Veritant
+    keywords: [ORDER, STORMCAST ETERNALS]
+    move: 5
+    wounds: 6 
+    save: 3
+    bravery: 9
+
+  - name: Knight-Questor
+    keywords: [ORDER, STORMCAST ETERNALS]
+    move: 5
+    wounds: 5
+    save: 3
+    bravery: 8 
+
+  - name: Knight-Heraldor
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, HERO, LORD-HERALDOR]
+    move: 5
+    wounds: 5 
+    save: 4
+    bravery: 8
+
+  - name: Knight-Vexillor
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, HERO, TOTEM, LORD-VEXILLOR]
+    move: 4
+    wounds: 5
+    save: 3
+    bravery: 9
+
+  - name: Knight-Azyros
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, HERO, KNIGHT-AZYROS]
+    move: 12
+    wounds: 5
+    save: 3
+    bravery: 9
+
+  - name: Knight-Venator
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, HERO, KNIGHT-VENATOR]
+    move: 12
+    wounds: 5
+    save: 3
+    bravery: 9
+
+  - name: Gryph-hounds
+    keywords: [ORDER, CELESTIAL, STORMCAST ETERNAL, GRYPH-HOUNDS]
+    move: 9
+    wounds: 3 
+    save: "-"
+    bravery: 6
+
+  - name: Judicators
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, JUSTICAR, JUDICATORS]
+    move: 5
+    wounds: 2 
+    save: 4
+    bravery: 6
+
+  - name: Liberators
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, REDEEMER, LIBERATORS]
+    move: 5
+    wounds: 2 
+    save: 4
+    bravery: 6 
+
+  - name: 30 Liberators
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, REDEEMER, LIBERATORS]
+    move: 5
+    wounds: 2 
+    save: 4
+    bravery: 6 
+
+  - name: Retributors
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, PALADIN, RETRIBUTORS]
+    move: 4
+    wounds: 3
+    save: 4
+    bravery: 7
+
+  - name: Protectors
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, PALADIN, PROTECTORS]
+    move: 4
+    wounds: 3
+    save: 4
+    bravery: 7 
+
+  - name: Decimators
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, PALADIN, DECIMATORS]
+    move: 4
+    wounds: 3
+    save: 4
+    bravery: 7 
+
+  - name: Prosecutors with Celestial Hammers
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, ANGELOS, PROSECUTORS]
+    move: 12
+    wounds: 2
+    save: 4
+    bravery: 6 
+
+  - name: Prosecutors with Stormcall Javelins
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, ANGELOS, PROSECUTORS]
+    move: 12
+    wounds: 2
+    save: 4
+    bravery: 6
+
+  - name: Lord-Celestant on Stardrake
+    keywords: [ORDER, CELESTIAL, HUMAN, STARDRAKE, STORMCAST ETERNAL, MONSTER, HERO, LORD-CELESTANT]
+    move: { 0: 12, 5: 11, 9: 10, 12: 8, 14: 6}
+    wounds: 16
+    save: 3
+    bravery: 9
+
+  - name: Drakesworn Templar
+    keywords: [ORDER, CELESTIAL, HUMAN, STARDRAKE, STORMCAST ETERNAL, MONSTER, HERO, DRAKESWORN TEMPLAR]
+    move: { 0: 12, 5: 11, 9: 10, 12: 8, 14: 6}
+    wounds: 16
+    save: 3
+    bravery: 9
+
+  - name: Fulminators
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, DRACOTHIAN GUARD, FULMINATORS]
+    move: 10
+    wounds: 5
+    save: 3
+    bravery: 7 
+
+  - name: Tempestors
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, DRACOTHIAN GUARD, TEMPESTORS]
+    move: 10
+    wounds: 5
+    save: 3
+    bravery: 7
+
+  - name: Concussors
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, DRACOTHIAN GUARD, CONCUSSORS]
+    move: 10
+    wounds: 5
+    save: 3
+    bravery: 7 
+
+  - name: Desolators
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, DRACOTHIAN GUARD, DESOLATORS]
+    move: 10
+    wounds: 5
+    save: 3
+    bravery: 7
+
+  - name: Lord-Aquilor
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, HERO, LORD-AQUILOR]
+    move: 12
+    wounds: 7
+    save: 3
+    bravery: 9
+
+  - name: Vanguard-Raptors with Longstrike Crossbows
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, JUSTICAR, VANGUARD-RAPTORS]
+    move: 5
+    wounds: 4
+    save: 2
+    bravery: 7
+
+  - name: Vanguard-Raptors with Hurricane Crossbows
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, JUSTICAR, VANGUARD-RAPTORS]
+    move: 5
+    wounds: 4
+    save: 2
+    bravery: 7
+
+  - name: Vanguard-Hunters
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, ANGELOS, VANGUARD-HUNTERS]
+    move: 6
+    wounds: 2 
+    save: 4
+    bravery: 7 
+
+  - name: Aetherwings
+    keywords: [ORDER, CELESTIAL, STORMCAST ETERNAL, AETHERWINGS ]
+    move: 12
+    wounds: 2
+    save: "-"
+    bravery: 6
+
+  - name: Vanguard-Palladors
+    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, ANGELOS, VANGUARD-PALLADORS ]
+    move: 12
+    wounds: 5
+    save: 4
+    bravery: 7 
+
+  # - name: Vandus Hammerhand
+  #   keywords: [ORDER, STORMCAST ETERNALS]
+  #   move: 
+  #   wounds: 
+  #   save: 
+  #   bravery: 
+
+
+
+
+
 
