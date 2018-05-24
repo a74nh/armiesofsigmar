@@ -1,0 +1,26 @@
+
+#Which rulesets. Use vanguard, battlehost, warhost or freeforall (no restrictions)
+rulebook: ghb2017
+size: vanguard
+
+#List of units to use. Either a grand alliance (eg: order) or faction (eg: sylvaneth)
+unitlists: [order]
+
+#Only allow units with the following keywords
+keywords: [ORDER]
+
+#Min and max points allowed for the armies
+min_points: 1000
+max_points: 1000
+
+#Min and max wounds allowed for the armies. Use -1 for no maximum.
+min_wounds: 55
+max_wounds: -1
+
+#Allow or exclude specific named units. Use -1 for no maximum.
+units:
+
+  #Special keyword. Matches all units not listed above.
+  __Others : { min: 0, max: -1 }
+
+
