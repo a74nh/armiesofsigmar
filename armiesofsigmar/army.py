@@ -7,7 +7,7 @@ class Army(object):
     def __init__(self, units_config):
         self.units_config = units_config
         self.units = []
-        for c in units_config:
+        for c in units_config["units"]:
             self.units.append(Unit(c))
 
     def __str__(self):

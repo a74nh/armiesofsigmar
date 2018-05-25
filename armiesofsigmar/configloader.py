@@ -7,8 +7,8 @@ SELF_DIR = os.path.dirname(sys.modules[__name__].__file__)
 RULEBOOK_LATEST="ghb2017"
 DEFAULT_ARMY_SIZE="vanguard"
 
-def load_units(rulebook=RULEBOOK_LATEST, unitlists=["all"]):
-    ret = []
+def load_units(rulebook=RULEBOOK_LATEST, unitlists=["all"], recursive=False):
+    ret = {"units":[], "allies":[]}
     retdict = {}
     for faction in unitlists:
         filename = os.path.join(SELF_DIR, "units", "{}_{}.yaml".format(rulebook, faction.replace(" ", "_")))
@@ -16,19 +16,21 @@ def load_units(rulebook=RULEBOOK_LATEST, unitlists=["all"]):
             book = yaml.load(f)
             for sectionname, section in book.iteritems():
                 if type(section) is str:
-                    ret = ret + load_units(rulebook, [sectionname])
+                    loadedsection = load_units(rulebook, [sectionname], True)
+                    ret["units"] = ret["units"] + loadedsection["units"]
                 else:
                     filenamew = os.path.join(SELF_DIR, "units", "warscrolls_{}.yaml".format(sectionname.replace(" ", "_")))
                     with open(filenamew, 'r') as fw:
                         fbook = yaml.load(fw)
                         fsection = fbook[sectionname]
-                        for unit in section:
-                            # print unit
+                        for unit in section["units"]:
                             for funit in fsection:
                                 if funit["name"] == unit["name"]:
                                     # print funit["name"]
                                     unit.update(funit)
-                        ret = ret + section
+                        ret["units"] = ret["units"] + section["units"]
+                        if not recursive:
+                            ret["allies"] = ret["allies"] + section["allies"]
                         #             print section
                         # print fsection
                         # print section
