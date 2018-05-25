@@ -1,0 +1,83 @@
+
+wanderers:
+
+  units:
+    - name: Glade Guard
+      points: 120
+      min: 10
+      max: 30
+      roles: [Battleline]
+
+    - name: Nomad Prince
+      points: 80
+      min: 1
+      max: 1
+      roles: [Leader]
+
+    - name: Spellweaver
+      points: 80
+      min: 1
+      max: 1
+      roles: [Leader]
+
+    - name: Wayfinder
+      points: 100
+      min: 1
+      max: 1
+      roles: [Leader]
+
+    - name: Waystrider
+      points: 80
+      min: 1
+      max: 1
+      roles: [Leader]
+
+    - name: Waywatcher
+      points: 100
+      min: 1
+      max: 1
+      roles: [Leader]
+
+    - name: Eternal Guard
+      points: 80
+      min: 10
+      max: 29
+      roles: [Battleline]
+
+    - name: 30 Eternal Guard
+      points: 210
+      min: 30
+      max: 30
+      roles: [Battleline]
+
+    - name:  Sisters of the Thorn
+      points: 220
+      min: 5
+      max: 20
+      roles: []
+
+    - name: Sisters of the Watch
+      points:  220
+      min: 10
+      max: 30
+      roles: [Battleline]
+
+    - name: Wild Riders
+      points: 140
+      min: 5
+      max: 20
+      roles: []
+
+    - name: Wildwood Rangers
+      points: 180
+      min: 10
+      max: 29
+      roles: [Battleline]
+
+    - name: 30 Wildwood Rangers
+      points: 480
+      min: 30
+      max: 30
+      roles: [Battleline]
+
+  allies: [ eldritch council, lion rangers, order draconis, phoenix temple, stormcast eternals, swifthawk agents, sylvaneth ]
