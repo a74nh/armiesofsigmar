@@ -1,81 +1,123 @@
 import re
 from unit import Unit
 from printoption import PrintOption
+import itertools
 
 class Army(object):
 
     def __init__(self, units_config):
         self.units_config = units_config
         self.units = []
+        self.allies = []
         for c in units_config["units"]:
-            self.units.append(Unit(c))
+            self.units.append(Unit(c, "unit"))
+        for c in units_config["allies"]:
+            self.allies.append(Unit(c, "ally"))
+        #Combination of all units and allies and battalions
+        self.all = [self.units, self.allies]
 
     def __str__(self):
-        unitline = []
         line = [("{}: ".format(self.points()))]
+
+        unitline = []
         for unit in self.units:
             unitstr = str(unit)
             if len(unitstr) > 0:
                 unitline.append(str(unit))
         line.append(", ".join(sorted(unitline, key=lambda x: re.sub('[^A-Za-z]+', '', x).lower())))
+
+        unitline = []
+        for unit in self.allies:
+            unitstr = str(unit)
+            if len(unitstr) > 0:
+                unitline.append(str(unit))
+        if unitline:
+            line.append("[")
+            line.append(", ".join(sorted(unitline, key=lambda x: re.sub('[^A-Za-z]+', '', x).lower())))
+            line.append("]")
+
         return " ".join(line)
 
     def __repr__(self):
         return str(self.units)
 
+    def __len__(self):
+        return len(self.units) + len(self.allies)
+
     def fullstr(self):
-        unitline = []
         line = [("Points {}".format(self.points()))]
         line.append("Wounds: {}, Models: {}, Bravery/Unit: {:.2f}, Save/Wound: {:.2f}+".format(
                                 self.wounds(),
                                 self.unitsize(),
                                 self.avg_bravery_per_unit(),
                                 self.avg_save_per_wound()))
+
+        unitline = []
         for unit in self.units:
             unitstr = unit.fullstr()
             if len(unitstr) > 0:
                 unitline.append(unitstr)
         line.append("\n".join(sorted(unitline, key=lambda x: re.sub('[^A-Za-z]+', '', x).lower())))
+
+        unitline = []
+        for unit in self.allies:
+            unitstr = unit.fullstr()
+            if len(unitstr) > 0:
+                unitline.append(unitstr)
+        if unitline:
+            line.append("Allies:")
+            line.append("\n".join(sorted(unitline, key=lambda x: re.sub('[^A-Za-z]+', '', x).lower())))
+
         line.append("")
         return "\n".join(line)
 
     def __getitem__(self,index):
-        if self.indexValid(index):
+        if index < len(self.units):
             return self.units[index]
+        index = index - len(self.units)
+        if index < len(self.allies):
+            return self.allies[index]
         else:
             raise IndexError("index out of range")
 
     def __setitem__(self,index,item):
-        if self.indexValid(index):
+        if index < len(self.units):
             self.units[index] = item
+            return
+        index = index - len(self.units)
+        if index < len(self.allies):
+            self.allies[index] = item
         else:
             raise IndexError("index out of range")
 
-    def indexValid(self,index):
-        return index >= 0  and index < len(self.units)
-
     def points(self):
         points = 0
-        for unit in self.units:
+        for unit in itertools.chain(*self.all):
+            points = points + unit.points()
+        return points
+
+    def ally_points(self):
+        points = 0
+        for unit in self.allies:
             points = points + unit.points()
         return points
 
     def unitsize(self):
         size = 0
-        for unit in self.units:
+        for unit in itertools.chain(*self.all):
             size = size + unit.unitsize()
         return size
 
     def wounds(self):
         wounds = 0
-        for unit in self.units:
+        for unit in itertools.chain(*self.all):
             wounds = wounds + unit.total_wounds()
         return wounds
 
     def avg_bravery_per_unit(self):
         avg_bravery = 0
         count = 0
-        for unit in self.units:
+        for unit in itertools.chain(*self.all):
             count = count + unit.unitsize()
             avg_bravery = avg_bravery + (unit.unitsize() * unit.bravery())
         return avg_bravery / float(count)
@@ -83,7 +125,7 @@ class Army(object):
     def avg_save_per_wound(self):
         avg_save = 0
         count = 0
-        for unit in self.units:
+        for unit in itertools.chain(*self.all):
             count = count + unit.total_wounds()
             avg_save = avg_save + (unit.total_wounds() * unit.save())
         return avg_save / float(count)
@@ -107,6 +149,9 @@ class Army(object):
             return False
         if not self.__check_min_max("models", self.unitsize(), 0, -1, restrict_config, final, showfails):
             return False
+        if not self.__check_min_max("allies", self.ally_points(), rules_config["allies"], rules_config["allies"], restrict_config, final, showfails):
+            return False
+
 
         #Create empty rules dict
         rules_check = {}

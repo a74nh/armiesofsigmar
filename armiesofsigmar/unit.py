@@ -4,7 +4,7 @@ import re
 
 class Unit(object):
 
-    def __init__(self, unit_config):
+    def __init__(self, unit_config, unittype):
         # Dictionary holding all the stats for a unit
         self.unit_config = unit_config
         # The number of multiples of a minimum sized unit.
@@ -14,6 +14,8 @@ class Unit(object):
         # the cost would still be the same as 20. Therefore this
         # system disallows that.
         self.count = 0
+        # Type of the unit. Main unit, ally or battalion
+        self.unittype = unittype
 
     def __str__(self):
         if self.count == 0:
@@ -48,6 +50,10 @@ class Unit(object):
         self.count = self.count + num
         if self.count < 0:
             self.count = 0
+
+
+    def is_type(self, unittype):
+        return self.unittype == unittype
 
     # The number of individual figures in the unit.
     # Always a multiple of unit minimum size.

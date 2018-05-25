@@ -30,7 +30,7 @@ class ArmyGenerator(object):
             self.finalarmies.append(copy.deepcopy(army))
             return
 
-        for unitid in range(min_start_index, len(self.units_config["units"])):
+        for unitid in range(min_start_index, len(army)):
             army[unitid].inc(1)
             self._generate(army, unitid)
             army[unitid].inc(-1)

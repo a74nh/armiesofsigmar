@@ -6,7 +6,6 @@ Either use as a python module or run main.py with a yaml config file.
 
 ## TODO
 * Add configs for missing factions (see armiesofsigmar/units/)
-* No support for allies
 * No support for battalions
 * Maybe better support for special Battleline alligence (currently supported as two different unit types)
 * Maybe better support for special cheaper maximum unit sizes (currently supported as two different unit types)
