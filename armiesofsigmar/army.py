@@ -149,7 +149,7 @@ class Army(object):
             return False
         if not self.__check_min_max("models", self.unitsize(), 0, -1, restrict_config, final, showfails):
             return False
-        if not self.__check_min_max("allies", self.ally_points(), rules_config["allies"], rules_config["allies"], restrict_config, final, showfails):
+        if not self.__check_min_max("allies", self.ally_points(), 0, rules_config["allies"], restrict_config, final, showfails):
             return False
 
 

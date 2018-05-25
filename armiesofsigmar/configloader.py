@@ -17,7 +17,7 @@ def load_units(rulebook=RULEBOOK_LATEST, unitlists=["all"], recursive=False):
                 book = yaml.load(f)
                 for sectionname, section in book.iteritems():
                     if type(section) is str:
-                        loadedsection = load_units(rulebook, [sectionname], True)
+                        loadedsection = load_units(rulebook, [sectionname], recursive)
                         ret["units"] = ret["units"] + loadedsection["units"]
                     else:
                         filenamew = os.path.join(SELF_DIR, "units", "warscrolls_{}.yaml".format(sectionname.replace(" ", "_")))

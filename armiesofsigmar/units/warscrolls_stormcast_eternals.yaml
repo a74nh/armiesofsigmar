@@ -86,7 +86,14 @@ stormcast eternals :
     bravery: 6
 
   - name: Judicators
-    keywords: [ORDER, CELESTIAL, HUMAN, STORMCAST ETERNAL, JUSTICAR, JUDICATORS]
+    keywords: [CELESTIAL, HUMAN, STORMCAST ETERNAL, JUSTICAR, JUDICATORS]
+    move: 5
+    wounds: 2 
+    save: 4
+    bravery: 6
+
+  - name: Judicators Order
+    keywords: [ORDER, CELESTIAL, HUMAN, JUSTICAR, JUDICATORS]
     move: 5
     wounds: 2 
     save: 4

@@ -21,7 +21,6 @@ class ArmyGenerator(object):
             if self._check_unit_restrict(unit, showfails):
                 newunits.append(unit)
         self.units_config["units"] = newunits
-        print self.units_config["units"]
 
         # Check allies
         if self.restrict_config.get("max_allies", 0) == 0:
