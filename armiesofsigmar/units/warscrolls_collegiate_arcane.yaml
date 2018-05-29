@@ -1,45 +1,47 @@
  
 collegiate arcane:
 
-  - name: Celestial Hurricanum
-    keywords: [ORDER, HUMAN, COLLEGIATE ARCANE, CELESTIAL HURRICANUM]
-    move: { 0: 10, 3: 9, 5: 8, 7: 7, 9: 6}
-    wounds: 11
-    save: 4
-    bravery: 6
+  units:
 
-  - name: Celestial Hurricanum With Celestial Battlemage
-    keywords: [ORDER, HUMAN, COLLEGIATE ARCANE, HERO, WIZARD, CELESTIAL HURRICANUM]
-    move: { 0: 10, 3: 9, 5: 8, 7: 7, 9: 6}
-    wounds: 11
-    save: 4
-    bravery: 6
+    - name: Celestial Hurricanum
+      keywords: [ORDER, HUMAN, COLLEGIATE ARCANE, CELESTIAL HURRICANUM]
+      move: { 0: 10, 3: 9, 5: 8, 7: 7, 9: 6}
+      wounds: 11
+      save: 4
+      bravery: 6
 
-  - name: Luminark of Hysh
-    keywords: [ORDER, HUMAN, COLLEGIATE ARCANE, LUMINARK OF HYSH]
-    move: { 0: 10, 3: 9, 5: 8, 7: 7, 9: 6}
-    wounds: 11
-    save: 4
-    bravery: 6
+    - name: Celestial Hurricanum With Celestial Battlemage
+      keywords: [ORDER, HUMAN, COLLEGIATE ARCANE, HERO, WIZARD, CELESTIAL HURRICANUM]
+      move: { 0: 10, 3: 9, 5: 8, 7: 7, 9: 6}
+      wounds: 11
+      save: 4
+      bravery: 6
 
-  - name: Luminark of Hysh with White Battlemage
-    keywords: [ORDER, HUMAN, COLLEGIATE ARCANE, HERO, WIZARD, LUMINARK OF HYSH]
-    move: { 0: 10, 3: 9, 5: 8, 7: 7, 9: 6}
-    wounds: 11
-    save: 4
-    bravery: 6
+    - name: Luminark of Hysh
+      keywords: [ORDER, HUMAN, COLLEGIATE ARCANE, LUMINARK OF HYSH]
+      move: { 0: 10, 3: 9, 5: 8, 7: 7, 9: 6}
+      wounds: 11
+      save: 4
+      bravery: 6
 
-  - name: Battlemage
-    keywords: [ORDER, HUMAN, COLLEGIATE ARCANE, HERO, WIZARD, BATTLEMAGE]
-    move: 5
-    wounds: 5
-    save: 6
-    bravery: 6
+    - name: Luminark of Hysh with White Battlemage
+      keywords: [ORDER, HUMAN, COLLEGIATE ARCANE, HERO, WIZARD, LUMINARK OF HYSH]
+      move: { 0: 10, 3: 9, 5: 8, 7: 7, 9: 6}
+      wounds: 11
+      save: 4
+      bravery: 6
 
-  - name: Battlemage on Griffon
-    keywords: [ORDER, HUMAN, GRIFFON, COLLEGIATE ARCANE, MONSTER, HERO, WIZARD, BATTLEMAGE]
-    move: { 0: 15, 4: 13, 7: 11, 10: 9, 12: 7}
-    wounds: 13
-    save: 5
-    bravery: 6
+    - name: Battlemage
+      keywords: [ORDER, HUMAN, COLLEGIATE ARCANE, HERO, WIZARD, BATTLEMAGE]
+      move: 5
+      wounds: 5
+      save: 6
+      bravery: 6
+
+    - name: Battlemage on Griffon
+      keywords: [ORDER, HUMAN, GRIFFON, COLLEGIATE ARCANE, MONSTER, HERO, WIZARD, BATTLEMAGE]
+      move: { 0: 15, 4: 13, 7: 11, 10: 9, 12: 7}
+      wounds: 13
+      save: 5
+      bravery: 6
 

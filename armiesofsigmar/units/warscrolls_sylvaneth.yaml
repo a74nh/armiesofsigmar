@@ -1,128 +1,130 @@
  
 sylvaneth:
 
-  - name: Alarielle the Everqueen
-    keywords: [ORDER, SYLVANETH, MONSTER, HERO, WIZARD, ALARIELLE THE EVERQUEEN]
-    move: { 0: 16, 5: 14, 8: 10, 11: 8, 14: 6}
-    wounds: 16
-    save: 3
-    bravery: 10
+  units:
 
-  - name: Drycha Hamadreth
-    keywords: [ORDER, SYLVANETH, MONSTER, HERO, WIZARD, DRYCHA HAMADRETH]
-    move: 9
-    wounds: 10
-    save: 3
-    bravery: 8
+    - name: Alarielle the Everqueen
+      keywords: [ORDER, SYLVANETH, MONSTER, HERO, WIZARD, ALARIELLE THE EVERQUEEN]
+      move: { 0: 16, 5: 14, 8: 10, 11: 8, 14: 6}
+      wounds: 16
+      save: 3
+      bravery: 10
 
-  - name: Spirit of Durthu
-    keywords: [ORDER, SYLVANETH, MONSTER, HERO, SPIRIT OF DURTHU]
-    move: 5
-    wounds: 12
-    save: 3
-    bravery: 9
+    - name: Drycha Hamadreth
+      keywords: [ORDER, SYLVANETH, MONSTER, HERO, WIZARD, DRYCHA HAMADRETH]
+      move: 9
+      wounds: 10
+      save: 3
+      bravery: 8
 
-  - name: Treelord Ancient
-    keywords: [ORDER, SYLVANETH, MONSTER, HERO, WIZARD, TREELORD ANCIENT]
-    move: 5
-    wounds: 12
-    save: 3
-    bravery: 9
+    - name: Spirit of Durthu
+      keywords: [ORDER, SYLVANETH, MONSTER, HERO, SPIRIT OF DURTHU]
+      move: 5
+      wounds: 12
+      save: 3
+      bravery: 9
 
-  - name: Treelord
-    keywords: [ORDER, SYLVANETH, MONSTER, TREELORD]
-    move: 6
-    wounds: 12
-    save: 3
-    bravery: 6
+    - name: Treelord Ancient
+      keywords: [ORDER, SYLVANETH, MONSTER, HERO, WIZARD, TREELORD ANCIENT]
+      move: 5
+      wounds: 12
+      save: 3
+      bravery: 9
 
-  - name: Branchwych
-    keywords: [ORDER, SYLVANETH, HERO, WIZARD, BRANCHWYCH]
-    move: 7
-    wounds: 5
-    save: 5
-    bravery: 7
+    - name: Treelord
+      keywords: [ORDER, SYLVANETH, MONSTER, TREELORD]
+      move: 6
+      wounds: 12
+      save: 3
+      bravery: 6
 
-  - name: Branchwraith
-    keywords: [ORDER, SYLVANETH, HERO, WIZARD, BRANCHWRAITH]
-    move: 7
-    wounds: 5
-    save: 5
-    bravery: 8
+    - name: Branchwych
+      keywords: [ORDER, SYLVANETH, HERO, WIZARD, BRANCHWYCH]
+      move: 7
+      wounds: 5
+      save: 5
+      bravery: 7
 
-  - name: Tree-Revenants
-    keywords: [SYLVANETH, TREE-REVENANTS]
-    move: 5
-    wounds: 1
-    save: 5
-    bravery: 6
+    - name: Branchwraith
+      keywords: [ORDER, SYLVANETH, HERO, WIZARD, BRANCHWRAITH]
+      move: 7
+      wounds: 5
+      save: 5
+      bravery: 8
 
-  - name: 30 Tree-Revenants
-    keywords: [SYLVANETH, TREE-REVENANTS]
-    move: 5
-    wounds: 1
-    save: 5
-    bravery: 6
+    - name: Tree-Revenants
+      keywords: [SYLVANETH, TREE-REVENANTS]
+      move: 5
+      wounds: 1
+      save: 5
+      bravery: 6
 
-  - name: Tree-Revenants Order
-    keywords: [ORDER, TREE-REVENANTS]
-    move: 5
-    wounds: 1
-    save: 5
-    bravery: 6
+    - name: 30 Tree-Revenants
+      keywords: [SYLVANETH, TREE-REVENANTS]
+      move: 5
+      wounds: 1
+      save: 5
+      bravery: 6
 
-  - name: 30 Tree-Revenants Order
-    keywords: [ORDER, TREE-REVENANTS]
-    move: 5
-    wounds: 1
-    save: 5
-    bravery: 6
+    - name: Tree-Revenants Order
+      keywords: [ORDER, TREE-REVENANTS]
+      move: 5
+      wounds: 1
+      save: 5
+      bravery: 6
 
-  - name: Spite-Revenants
-    keywords: [SYLVANETH, SPITE-REVENANTS]
-    move: 5
-    wounds: 1
-    save: 5
-    bravery: 6
+    - name: 30 Tree-Revenants Order
+      keywords: [ORDER, TREE-REVENANTS]
+      move: 5
+      wounds: 1
+      save: 5
+      bravery: 6
 
-  - name: 30 Spite-Revenants
-    keywords: [SYLVANETH, SPITE-REVENANTS]
-    move: 5
-    wounds: 1
-    save: 5
-    bravery: 6
+    - name: Spite-Revenants
+      keywords: [SYLVANETH, SPITE-REVENANTS]
+      move: 5
+      wounds: 1
+      save: 5
+      bravery: 6
 
-  - name: Spite-Revenants Order
-    keywords: [ORDER, SPITE-REVENANTS]
-    move: 5
-    wounds: 1
-    save: 5
-    bravery: 6
+    - name: 30 Spite-Revenants
+      keywords: [SYLVANETH, SPITE-REVENANTS]
+      move: 5
+      wounds: 1
+      save: 5
+      bravery: 6
 
-  - name: 30 Spite-Revenants Order
-    keywords: [ORDER, SPITE-REVENANTS]
-    move: 5
-    wounds: 1
-    save: 5
-    bravery: 6
+    - name: Spite-Revenants Order
+      keywords: [ORDER, SPITE-REVENANTS]
+      move: 5
+      wounds: 1
+      save: 5
+      bravery: 6
 
-  - name: Kurnoth Hunters
-    keywords: [ORDER, SYLVANETH, KURNOTH HUNTERS]
-    move: 5
-    wounds: 5
-    save: 4
-    bravery: 7
+    - name: 30 Spite-Revenants Order
+      keywords: [ORDER, SPITE-REVENANTS]
+      move: 5
+      wounds: 1
+      save: 5
+      bravery: 6
 
-  - name: Dryads
-    keywords : [ORDER, SYLVANETH, DRYADS]
-    move: 7
-    wounds: 1
-    save: 5
-    bravery: 6
+    - name: Kurnoth Hunters
+      keywords: [ORDER, SYLVANETH, KURNOTH HUNTERS]
+      move: 5
+      wounds: 5
+      save: 4
+      bravery: 7
 
-  - name: 30 Dryads
-    keywords : [ORDER, SYLVANETH, DRYADS]
-    move: 7
-    wounds: 1
-    save: 5
-    bravery: 6
+    - name: Dryads
+      keywords : [ORDER, SYLVANETH, DRYADS]
+      move: 7
+      wounds: 1
+      save: 5
+      bravery: 6
+
+    - name: 30 Dryads
+      keywords : [ORDER, SYLVANETH, DRYADS]
+      move: 7
+      wounds: 1
+      save: 5
+      bravery: 6

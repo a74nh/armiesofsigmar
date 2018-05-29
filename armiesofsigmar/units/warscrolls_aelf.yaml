@@ -1,15 +1,16 @@
 aelf:
 
-  - name: Mistweaver Saih
-    keywords: [ORDER, AELF, HERO, WIZARD, MISTWEAVER SAIH ]
-    move: 8
-    wounds: 5
-    save: 6
-    bravery: 8
+  units:
+    - name: Mistweaver Saih
+      keywords: [ORDER, AELF, HERO, WIZARD, MISTWEAVER SAIH ]
+      move: 8
+      wounds: 5
+      save: 6
+      bravery: 8
 
-  - name: Tenebrael Shard
-    keywords: [ORDER, AELF, HERO, TENEBRAEL SHARD ]
-    move: 8
-    wounds: 5
-    save: 5
-    bravery: 8
+    - name: Tenebrael Shard
+      keywords: [ORDER, AELF, HERO, TENEBRAEL SHARD ]
+      move: 8
+      wounds: 5
+      save: 5
+      bravery: 8

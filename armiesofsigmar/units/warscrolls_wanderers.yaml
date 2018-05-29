@@ -1,93 +1,94 @@
 
 wanderers:
 
-  - name: Glade Guard
-    keywords: [ORDER, AELF, WANDERER, GLADE GUARD]
-    move: 6
-    wounds: 1
-    save: 6
-    bravery: 6
+  units:
+    - name: Glade Guard
+      keywords: [ORDER, AELF, WANDERER, GLADE GUARD]
+      move: 6
+      wounds: 1
+      save: 6
+      bravery: 6
 
-  - name: Nomad Prince
-    keywords: [ORDER, AELF, WANDERER, HERO, NOMAD PRINCE]
-    move: 6
-    wounds: 5
-    save: 4
-    bravery: 8
+    - name: Nomad Prince
+      keywords: [ORDER, AELF, WANDERER, HERO, NOMAD PRINCE]
+      move: 6
+      wounds: 5
+      save: 4
+      bravery: 8
 
-  - name: Spellweaver
-    keywords: [ORDER, AELF, WANDERER, HERO, WIZARD, SPELLWEAVER]
-    move: 6
-    wounds: 5
-    save: 6
-    bravery: 7
+    - name: Spellweaver
+      keywords: [ORDER, AELF, WANDERER, HERO, WIZARD, SPELLWEAVER]
+      move: 6
+      wounds: 5
+      save: 6
+      bravery: 7
 
-  - name: Wayfinder
-    keywords: [ORDER, AELF, WANDERER, HERO, WAYFINDER]
-    move: 6
-    wounds: 5
-    save: 4
-    bravery: 8
+    - name: Wayfinder
+      keywords: [ORDER, AELF, WANDERER, HERO, WAYFINDER]
+      move: 6
+      wounds: 5
+      save: 4
+      bravery: 8
 
-  - name: Waystrider
-    keywords: [ORDER, AELF, WANDERER, HERO, WAYSTRIDER]
-    move: 6
-    wounds: 5
-    save: 4
-    bravery: 8
+    - name: Waystrider
+      keywords: [ORDER, AELF, WANDERER, HERO, WAYSTRIDER]
+      move: 6
+      wounds: 5
+      save: 4
+      bravery: 8
 
-  - name: Waywatcher
-    keywords: [ORDER, AELF, WANDERER, HERO, WAYWATCHER]
-    move: 6
-    wounds: 5
-    save: 4
-    bravery: 8
+    - name: Waywatcher
+      keywords: [ORDER, AELF, WANDERER, HERO, WAYWATCHER]
+      move: 6
+      wounds: 5
+      save: 4
+      bravery: 8
 
-  - name: Eternal Guard
-    keywords: [ORDER, AELF, WANDERER, ETERNAL GUARD]
-    move: 6
-    wounds: 1
-    save: 5
-    bravery: 7
+    - name: Eternal Guard
+      keywords: [ORDER, AELF, WANDERER, ETERNAL GUARD]
+      move: 6
+      wounds: 1
+      save: 5
+      bravery: 7
 
-  - name: 30 Eternal Guard
-    keywords: [ORDER, AELF, WANDERER, ETERNAL GUARD]
-    move: 6
-    wounds: 1
-    save: 5
-    bravery: 7
+    - name: 30 Eternal Guard
+      keywords: [ORDER, AELF, WANDERER, ETERNAL GUARD]
+      move: 6
+      wounds: 1
+      save: 5
+      bravery: 7
 
-  - name:  Sisters of the Thorn
-    keywords: [ORDER, AELF, WANDERER, WIZARD, SISTERS OF THE THORN]
-    move: 12
-    wounds: 2
-    save: 5
-    bravery: 7
+    - name:  Sisters of the Thorn
+      keywords: [ORDER, AELF, WANDERER, WIZARD, SISTERS OF THE THORN]
+      move: 12
+      wounds: 2
+      save: 5
+      bravery: 7
 
-  - name: Sisters of the Watch
-    keywords: [ORDER, AELF, WANDERER, SISTERS OF THE WATCH]
-    move: 6
-    wounds: 1
-    save: 5
-    bravery: 7
+    - name: Sisters of the Watch
+      keywords: [ORDER, AELF, WANDERER, SISTERS OF THE WATCH]
+      move: 6
+      wounds: 1
+      save: 5
+      bravery: 7
 
-  - name: Wild Riders
-    keywords: [ORDER, AELF, WANDERER, WILD RIDERS]
-    move: 12
-    wounds: 2
-    save: 5
-    bravery: 8
+    - name: Wild Riders
+      keywords: [ORDER, AELF, WANDERER, WILD RIDERS]
+      move: 12
+      wounds: 2
+      save: 5
+      bravery: 8
 
-  - name: Wildwood Rangers
-    keywords: [ORDER, AELF, WANDERER, WILDWOOD RANGERS]
-    move: 6
-    wounds: 1
-    save: 5
-    bravery: 7
+    - name: Wildwood Rangers
+      keywords: [ORDER, AELF, WANDERER, WILDWOOD RANGERS]
+      move: 6
+      wounds: 1
+      save: 5
+      bravery: 7
 
-  - name: 30 Wildwood Rangers
-    keywords: [ORDER, AELF, WANDERER, WILDWOOD RANGERS]
-    move: 6
-    wounds: 1
-    save: 5
-    bravery: 7
+    - name: 30 Wildwood Rangers
+      keywords: [ORDER, AELF, WANDERER, WILDWOOD RANGERS]
+      move: 6
+      wounds: 1
+      save: 5
+      bravery: 7

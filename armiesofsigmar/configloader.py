@@ -23,7 +23,7 @@ def load_units(rulebook=RULEBOOK_LATEST, unitlists=["all"], recursive=False):
                         filenamew = os.path.join(SELF_DIR, "units", "warscrolls_{}.yaml".format(sectionname.replace(" ", "_")))
                         with open(filenamew, 'r') as fw:
                             fbook = yaml.load(fw)
-                            fsection = fbook[sectionname]
+                            fsection = fbook[sectionname]["units"]
                             for unit in section["units"]:
                                 for funit in fsection:
                                     if funit["name"] == unit["name"]:
