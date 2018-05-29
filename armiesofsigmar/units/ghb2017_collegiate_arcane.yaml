@@ -1,0 +1,41 @@
+collegiate arcane:
+
+  units:
+   - name: Celestial Hurricanum
+     points: 380
+     min: 1
+     max: 1
+     roles: [Behemoth, Leader]
+
+   - name: Celestial Hurricanum With Celestial Battlemage
+     points: 380
+     min: 1
+     max: 1
+     roles: [Behemoth, Leader]
+
+   - name: Luminark of Hysh
+     points: 240
+     min: 1
+     max: 1
+     roles: [Behemoth, Leader]
+
+   - name: Luminark of Hysh with White Battlemage
+     points: 240
+     min: 1
+     max: 1
+     roles: [Behemoth, Leader]
+
+   - name: Battlemage
+     points: 100
+     min: 1
+     max: 1
+     roles: [Leader]
+
+   - name: Battlemage on Griffon
+     points: 260
+     min: 1
+     max: 1
+     roles: [Leader, Behemoth]
+
+
+  allies: [ darkling covens, order serpentis, scourge privateers, shadowblades, stormcast eternal ]
