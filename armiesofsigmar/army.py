@@ -179,7 +179,7 @@ class Army(object):
             # Only allow 1 of each unique model
             if unit.is_unique() and unit.count > 1 :
                 if showfails.value > PrintOption.SILENT.value:
-                    print "FAIL unique {} {} : {}".format(unit.name(), count, self)
+                    print "FAIL unique {} {} : {}".format(unit.name(), unit.count, self)
                 return False
 
             # Count all roles for model
@@ -187,11 +187,14 @@ class Army(object):
                 rules_check[role] = rules_check.get(role,0) + unit.count
 
             # Check keyword match
+            match = False
             for restrict_keyword in restrict_config["keywords"]:
-                if not restrict_keyword in unit.keywords():
-                    if showfails.value > PrintOption.SILENT.value:
-                        print "FAIL Keyword restrict: {} {} {} : {}".format(unit.name(), unit.keywords(), restrict_keyword, self)
-                    return False
+                if restrict_keyword in unit.keywords():
+                    match = True
+            if not match:
+                if showfails.value > PrintOption.SILENT.value:
+                    print "FAIL Keyword restrict: {} {} {} : {}".format(unit.name(), unit.keywords(), restrict_config["keywords"], self)
+                return False
 
         # Check roles
         for role, count in rules_check.iteritems():

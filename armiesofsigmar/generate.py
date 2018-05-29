@@ -55,23 +55,30 @@ class ArmyGenerator(object):
                 return False
 
         # Check keyword match
+        match = False
         for restrict_keyword in self.restrict_config["keywords"]:
-            if not restrict_keyword in keywords:
-                if showfails.value > PrintOption.SILENT.value:
-                    print "UNIT RESTRICT Keyword restrict: {} {} {}".format(name, keywords, restrict_keyword)
-                return False
+            if restrict_keyword in keywords:
+                match = True
+        if not match:
+            if showfails.value > PrintOption.SILENT.value:
+                print "UNIT RESTRICT Keyword restrict: {} {} {}".format(name, keywords, self.restrict_config["keywords"])
+            return False
 
         return True
 
     def _check_ally_restrict(self, unit, showfails):
         name = unit.get("name","")
         keywords = unit.get("keywords",[])
+
         # Check keyword match
+        match = False
         for restrict_keyword in self.restrict_config["allies_keywords"]:
-            if not restrict_keyword in keywords:
-                if showfails.value > PrintOption.SILENT.value:
-                    print "ALLY RESTRICT Ally Keyword restrict: {} {} {}".format(name, keywords, restrict_keyword)
-                return False
+            if restrict_keyword in keywords:
+                match = True
+        if not match:
+            if showfails.value > PrintOption.SILENT.value:
+                print "ALLY RESTRICT Ally Keyword restrict: {} {} {}".format(name, keywords, self.restrict_config["allies_keywords"])
+            return False
         return True
 
     def generate_army(self):
