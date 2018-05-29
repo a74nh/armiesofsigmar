@@ -26,7 +26,14 @@ class ArmyGenerator(object):
         if self.restrict_config.get("max_allies", 0) == 0:
             self.units_config["allies"] = []
             if showfails.value > PrintOption.SILENT.value:
-                print "FAIL allies max {}".format(self.restrict_config.get("max_allies", 0))
+                print "ALLY RESTRICT allies max {}".format(self.restrict_config.get("max_allies", 0))
+        else:
+            newallies = []
+            for unit in self.units_config["allies"]:
+                if self._check_ally_restrict(unit, showfails):
+                    newallies.append(unit)
+            self.units_config["allies"] = newallies
+
 
     def _check_unit_restrict(self, unit, showfails):
         name = unit.get("name","")
@@ -37,23 +44,34 @@ class ArmyGenerator(object):
         # Check unit meets max restriction
         if restrict_unit["max"] == 0:
             if showfails.value > PrintOption.SILENT.value:
-                print "FAIL MAX restrict {} {}".format(name, restrict_unit["max"])
+                print "UNIT RESTRICT MAX restrict {} {}".format(name, restrict_unit["max"])
             return False
 
         # Check unit meets max role restriction
         for role in roles:
             if self.rules_config["units"][role]["max"] == 0:
                 if showfails.value > PrintOption.SILENT.value:
-                    print "FAIL Role MAX {} {} {}".format(name, role, self.rules_config["units"][role]["max"])
+                    print "UNIT RESTRICT Role MAX {} {} {}".format(name, role, self.rules_config["units"][role]["max"])
                 return False
 
         # Check keyword match
         for restrict_keyword in self.restrict_config["keywords"]:
             if not restrict_keyword in keywords:
                 if showfails.value > PrintOption.SILENT.value:
-                    print "FAIL Keyword restrict: {} {} {}".format(name, keywords, restrict_keyword)
+                    print "UNIT RESTRICT Keyword restrict: {} {} {}".format(name, keywords, restrict_keyword)
                 return False
 
+        return True
+
+    def _check_ally_restrict(self, unit, showfails):
+        name = unit.get("name","")
+        keywords = unit.get("keywords",[])
+        # Check keyword match
+        for restrict_keyword in self.restrict_config["allies_keywords"]:
+            if not restrict_keyword in keywords:
+                if showfails.value > PrintOption.SILENT.value:
+                    print "ALLY RESTRICT Ally Keyword restrict: {} {} {}".format(name, keywords, restrict_keyword)
+                return False
         return True
 
     def generate_army(self):
