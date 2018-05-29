@@ -17,7 +17,7 @@ if args.verbose:
 
 restrict_config = load_restictions(args.configfile[0])
 gen = ArmyGenerator(restrict_config, printarmies=showarmies, showfails=showfails)
-gen.restrict_units(showfails=PrintOption.SILENT)
+gen.restrict_units(showfails=showfails)
 armies = gen.generate_army()
 
 ### Alternatively, print after generating:
