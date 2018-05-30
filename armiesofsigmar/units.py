@@ -64,32 +64,17 @@ class Units(object):
             wounds = wounds + unit.total_wounds()
         return wounds
 
-    #TODO: Needs checking and fixing
-    def avg_bravery_per_unit(self):
-        if self.unitsize() == 0:
-            return 0
-        avg_bravery = 0
-        count = 0
-        for unit in self.units:
-            count = count + unit.unitsize()
-            avg_bravery = avg_bravery + (unit.unitsize() * unit.bravery())
-        if count == 0:
-            return 0
-        return avg_bravery / float(count)
+    def _bravery_sum(self):
+        x = 0
+        for u in self.units:
+            x = x + (u.unitsize() * u.bravery())
+        return x
 
-    #TODO: Needs checking and fixing
-    def avg_save_per_wound(self):
-        if self.unitsize() == 0:
-            return 0
-        avg_save = 0
-        count = 0
-        for unit in self.units:
-            count = count + unit.total_wounds()
-            avg_save = avg_save + (unit.total_wounds() * unit.save())
-        if count == 0:
-            return 0
-        return avg_save / float(count)
-
+    def _save_mul_wounds_sum(self):
+        x = 0
+        for u in self.units:
+            x = x + (u.total_wounds() * u.save())
+        return x
 
     def is_valid(self, restrict_config, final=True, showfails=PrintOption.SILENT):
         for unit in self.units:

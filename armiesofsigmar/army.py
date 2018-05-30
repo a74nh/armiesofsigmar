@@ -85,20 +85,29 @@ class Army(object):
             x = x + u.wounds()
         return x
 
-    #TODO: BORKEN!
+    def _bravery_sum(self):
+        x = 0
+        for u in self.all:
+            x = x + u._bravery_sum()
+        return x
+
+    def _save_mul_wounds_sum(self):
+        x = 0
+        for u in self.all:
+            x = x + u._save_mul_wounds_sum()
+        return x
+
     def avg_bravery_per_unit(self):
-        x=0
-        for u in self.all:
-            x = x + u.avg_bravery_per_unit()
-        return x
+        count = self.unitsize()
+        if count == 0:
+            return 0
+        return self._bravery_sum() / float(count)
 
-    #TODO: BORKEN!
     def avg_save_per_wound(self):
-        x=0
-        for u in self.all:
-            x = x + u.avg_save_per_wound()
-        return x
-
+        count = self.wounds()
+        if count == 0:
+            return 0
+        return self._save_mul_wounds_sum() / float(count)
 
     def __check_min_max(self, constraint, current_value, default_min, default_max, restrict_config, final, showfails):
         con_min = restrict_config.get("min_"+constraint, default_min)
