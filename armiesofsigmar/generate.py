@@ -94,10 +94,10 @@ class ArmyGenerator(object):
         return self.finalarmies
 
     def _generate(self, army, min_start_index, battalion_inner_index):
-        if not army.is_valid(self.rules_config, self.restrict_config, self.units_config, final=False, showfails=self.showfails):
+        if not army.is_valid(self.rules_config, self.restrict_config, final=False, showfails=self.showfails):
             return
 
-        if army.is_valid(self.rules_config, self.restrict_config, self.units_config, final=True, showfails=self.showfails):
+        if army.is_valid(self.rules_config, self.restrict_config, final=True, showfails=self.showfails):
             if self.printarmies == PrintOption.PRINT:
                 print(army)
             if self.printarmies == PrintOption.VERBOSE:

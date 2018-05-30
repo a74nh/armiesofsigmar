@@ -1,14 +1,15 @@
 import copy
 import re
 from printoption import PrintOption
+from unit import Unit
 
 class Battalion(object):
 
-    def __init__(self, unit_config, units_map):
+    def __init__(self, unit_config):
         self.unit_config = unit_config
         self.units = []
-        for unitname, unit in self.unit_config["units"].iteritems():
-            self.units.append(copy.deepcopy(units_map[unitname]))
+        for c in self.unit_config["units"]:
+            self.units.append(Unit(c, "unit"))
 
     def __str__(self):
         if self.unitsize() == 0:
@@ -135,39 +136,19 @@ class Battalion(object):
         return self.unit_config.get("bravery", 0)
 
 
-    def is_valid(self, rules_config, restrict_config, units_config, final=True, showfails=PrintOption.SILENT):
+    def is_valid(self, restrict_config, final=True, showfails=PrintOption.SILENT):
 
         if self.unitsize() == 0:
             return True
 
-        #Find the rules for this battalion
-        battalion_rules = {}
-        for r in units_config["battalions"]:
-            if r["name"] == self.name():
-                battalion_rules = r
-        if not battalion_rules:
-            return False
-
         #Check units and count up roles
         for unit in self.units:
 
-            rules_unit = battalion_rules["units"].get(unit.name(), None)
-            if not rules_unit:
+            #TODO: Restrict from both restrict config and unit_config !!!
+            restrict_unit = unit.unit_config
+            restrict_keywords = []
+            if not unit.is_valid(restrict_unit, restrict_keywords, final, showfails):
                 return False
-
-            # Check unit meets min restriction
-            if final and unit.count < rules_unit["min"]:
-                if showfails.value > PrintOption.SILENT.value:
-                    print "FAIL MIN restrict {} {} {} : {}".format(unit.name(), rules_unit["min"], unit.count, self)
-                return False
-            # Check unit meets max restriction
-            if rules_unit["max"] != -1 and unit.count >rules_unit["max"]:
-                if showfails.value > PrintOption.SILENT.value:
-                    print "FAIL MAX restrict {} {} {} : {}".format(unit.name(), rules_unit["max"], unit.count, self)
-                return False
-
-            if unit.count == 0:
-                continue
 
         return True
 

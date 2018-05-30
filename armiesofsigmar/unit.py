@@ -1,4 +1,5 @@
 import re
+from printoption import PrintOption
 
 # A unit consists of a number of instances of a single model.
 
@@ -126,3 +127,41 @@ class Unit(object):
 
     def bravery(self):
         return self.unit_config.get("bravery", 0)
+
+
+    def is_valid(self, restrict_unit, restrict_keywords, final=True, showfails=PrintOption.SILENT):
+        
+        # Check unit meets min restriction
+        if final and self.count < restrict_unit["min"]:
+            if showfails.value > PrintOption.SILENT.value:
+                print "FAIL MIN restrict {} {} {} : {}".format(self.name(), restrict_unit["min"], self.count, self)
+            return False
+
+        if self.count == 0:
+            return True
+
+        # Check unit meets max restriction
+        if restrict_unit["max"] != -1 and self.count >restrict_unit["max"]:
+            if showfails.value > PrintOption.SILENT.value:
+                print "FAIL MAX restrict {} {} {} : {}".format(self.name(), restrict_unit["max"], self.count, self)
+            return False
+
+        # Only allow 1 of each unique model
+        if self.is_unique() and self.count > 1 :
+            if showfails.value > PrintOption.SILENT.value:
+                print "FAIL unique {} {} : {}".format(self.name(), self.count, self)
+            return False
+
+        # Check keyword match. Empty list means allow anything
+        match = False
+        if not restrict_keywords:
+            match = True
+        for restrict_keyword in restrict_keywords:
+            if restrict_keyword in self.keywords():
+                match = True
+        if not match:
+            if showfails.value > PrintOption.SILENT.value:
+                print "FAIL Keyword restrict: {} {} {} : {}".format(self.name(), self.keywords(), restrict_keywords, self)
+            return False
+
+        return True

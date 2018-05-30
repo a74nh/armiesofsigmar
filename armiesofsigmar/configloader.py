@@ -1,6 +1,7 @@
 import os.path
 import yaml
 import sys
+import itertools
 
 SELF_DIR = os.path.dirname(sys.modules[__name__].__file__)
 
@@ -37,6 +38,15 @@ def load_units(rulebook=RULEBOOK_LATEST, unitlists=["all"], recursive=False):
             pass
     if not recursive:
         ret["allies"] = load_units(rulebook, ret["allies"], True)["units"]
+        for battalion in ret["battalions"]:
+            new_units = []
+            for name, config in battalion["units"].iteritems():
+                for u in itertools.chain(ret["units"], ret["allies"]):
+                    if u["name"] == name:
+                        config.update(u)
+                        new_units.append(config)
+                        continue
+            battalion["units"]=new_units
     # print ret
     return ret
 
