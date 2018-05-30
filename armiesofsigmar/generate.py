@@ -56,7 +56,7 @@ class ArmyGenerator(object):
 
         # Check keyword match
         match = False
-        for restrict_keyword in self.restrict_config["keywords"]:
+        for restrict_keyword in self.restrict_config.get("keywords", []):
             if restrict_keyword in keywords:
                 match = True
         if not match:
@@ -72,7 +72,7 @@ class ArmyGenerator(object):
 
         # Check keyword match
         match = False
-        for restrict_keyword in self.restrict_config["allies_keywords"]:
+        for restrict_keyword in self.restrict_config.get("allies_keywords",[]):
             if restrict_keyword in keywords:
                 match = True
         if not match:
