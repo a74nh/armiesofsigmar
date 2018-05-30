@@ -43,28 +43,18 @@ class Army(object):
         return "\n".join(line)
 
     def __getitem__(self,index):
-        if index < len(self.units):
-            return self.units[index]
-        index = index - len(self.units)
-        if index < len(self.allies):
-            return self.allies[index]
-        index = index - len(self.allies)
-        if index < len(self.battalions):
-            return self.battalions[index]
+        for u in self.all:
+            if index < len(u):
+                return u[index]
+            index = index - len(u)
         raise IndexError("index out of range")
 
     def __setitem__(self,index,item):
-        if index < len(self.units):
-            self.units[index] = item
-            return
-        index = index - len(self.units)
-        if index < len(self.allies):
-            self.allies[index] = item
-            return
-        index = index - len(self.allies)
-        if index < len(self.battalions):
-            self.battalions[index] = item
-            return
+        for u in self.all:
+            if index < len(u):
+                u[index] = item
+                return
+            index = index - len(u)
         raise IndexError("index out of range")
 
     def points(self):
