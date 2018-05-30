@@ -20,7 +20,7 @@ class Unit(object):
     def __str__(self):
         if self.count == 0:
             return ""
-        if self.count > 1:
+        if self.unitsize() > 1:
             return "{} {} ({})".format(self.unitsize(),
                                       self.name(),
                                       self.points())
@@ -32,40 +32,31 @@ class Unit(object):
                                   self.name(),
                                   self.points())
 
-    def fullstr(self):
+    def fullstr(self, tabs=1, points=True):
+        tabs_str = "\t" * tabs
         ret = []
         if self.count == 0:
             return ""
-        ret.append("\t{} {}".format(self.unitsize(), self.name()))
-        ret.append("\t\tPoints: {}".format(self.points()))
-        ret.append("\t\tRoles: {}".format(", ".join(self.roles())))
-        ret.append("\t\tM/W/S/B: {}/{}/{}/{}".format(self.move(),
-                                                    self.wounds_str(),
-                                                    self.save_str(),
-                                                    self.bravery()))
+        ret.append("{}{} {}".format(tabs_str, self.unitsize(), self.name()))
+        tabs_str = "\t" * (tabs+1)
+        if points:
+            ret.append("{}Points: {}".format(tabs_str, self.points()))
+        if self.roles():
+            ret.append("{}Roles: {}".format(tabs_str, ", ".join(self.roles())))
+        ret.append("{}M/W/S/B: {}/{}/{}/{}".format(tabs_str,
+                                                self.move(),
+                                                self.wounds_str(),
+                                                self.save_str(),
+                                                self.bravery()))
         return "\n".join(ret)
 
 
     def str_battalion(self):
         if self.count == 0:
             return ""
-        if self.count > 1:
-            return "{}*{}".format(self.count, self.name())
+        if self.unitsize() > 1:
+            return "{} {}".format(self.unitsize(), self.name())
         return "{}".format(self.name())
-
-    def fullstr_battalion(self):
-        ret = []
-        if self.count == 0:
-            return ""
-        ret.append("\t\t{} {}".format(self.unitsize(), self.name()))
-        if self.roles():
-            ret.append("\t\t\tRoles: {}".format(", ".join(self.roles())))
-        ret.append("\t\t\tM/W/S/B: {}/{}/{}/{}".format(self.move(),
-                                                    self.wounds_str(),
-                                                    self.save_str(),
-                                                    self.bravery()))
-        return "\n".join(ret)
-
 
     # Increase the multiples of minimum size in the unit
     def inc(self, num):

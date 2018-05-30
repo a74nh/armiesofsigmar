@@ -18,12 +18,15 @@ class Army(object):
             self.map[u.name()] = u
         for c in units_config["allies"]:
             u = Unit(c, "ally")
-            self.units.append(u)
+            self.allies.append(u)
             self.map[u.name()] = u
         for c in units_config["battalions"]:
             self.battalions.append(Battalion(c, self.map))
         #Combination of all units and allies and battalions
         self.all = [self.units, self.allies, self.battalions]
+        # print self.units
+        # print self.allies
+        # print self.battalions
 
     def __str__(self):
         line = [("{}: ".format(self.points()))]
@@ -41,9 +44,8 @@ class Army(object):
             if len(unitstr) > 0:
                 unitline.append(unitstr)
         if unitline:
-            line.append("[")
+            line.append(", ")
             line.append(", ".join(sorted(unitline, key=lambda x: re.sub('[^A-Za-z]+', '', x).lower())))
-            line.append("]")
 
         unitline = []
         for unit in self.battalions:
@@ -64,7 +66,7 @@ class Army(object):
 
     def fullstr(self):
         line = [("Points {}".format(self.points()))]
-        line.append("Wounds: {}, Models: {}, Bravery/Unit: {:.2f}, Save/Wound: {:.2f}+".format(
+        line.append("\tWounds: {}, Models: {}, Bravery/Unit: {:.2f}, Save/Wound: {:.2f}+".format(
                                 self.wounds(),
                                 self.unitsize(),
                                 self.avg_bravery_per_unit(),
@@ -78,12 +80,15 @@ class Army(object):
         line.append("\n".join(sorted(unitline, key=lambda x: re.sub('[^A-Za-z]+', '', x).lower())))
 
         unitline = []
+        tot_points = 0
         for unit in self.allies:
-            unitstr = unit.fullstr()
+            unitstr = unit.fullstr(tabs=2)
+            tot_points = tot_points + unit.points()
             if len(unitstr) > 0:
                 unitline.append(unitstr)
         if unitline:
-            line.append("Allies:")
+            line.append("\tAllies:")
+            line.append("\t\tTotal Points: {}".format(tot_points))
             line.append("\n".join(sorted(unitline, key=lambda x: re.sub('[^A-Za-z]+', '', x).lower())))
 
         unitline = []
@@ -218,14 +223,42 @@ class Army(object):
             for role in unit.roles():
                 rules_check[role] = rules_check.get(role,0) + unit.count
 
-            # Check keyword match
+            # Check keyword match. Empty list means allow anything
             match = False
-            for restrict_keyword in restrict_config["keywords"]:
+            restrict_keywords = restrict_config.get("keywords", [])
+            if not restrict_keywords:
+                match = True
+            for restrict_keyword in restrict_keywords:
                 if restrict_keyword in unit.keywords():
                     match = True
             if not match:
                 if showfails.value > PrintOption.SILENT.value:
-                    print "FAIL Keyword restrict: {} {} {} : {}".format(unit.name(), unit.keywords(), restrict_config["keywords"], self)
+                    print "FAIL Keyword restrict: {} {} {} : {}".format(unit.name(), unit.keywords(), restrict_keywords, self)
+                return False
+
+        #Check allies
+        for unit in self.allies:
+
+            #TODO: Add individual unit type restrictions for allies
+
+            if unit.count == 0:
+                continue
+
+            # Count all roles for model
+            for role in unit.roles():
+                rules_check[role] = rules_check.get(role,0) + unit.count
+
+            # Check keyword match. Empty list means allow anything
+            match = False
+            restrict_keywords = restrict_config.get("allies_keywords", [])
+            if not restrict_keywords:
+                match = True
+            for restrict_keyword in restrict_keywords:
+                if restrict_keyword in unit.keywords():
+                    match = True
+            if not match:
+                if showfails.value > PrintOption.SILENT.value:
+                    print "FAIL Allies Keyword restrict: {} {} {} : {}".format(unit.name(), unit.keywords(), restrict_keywords, self)
                 return False
 
         # Check roles

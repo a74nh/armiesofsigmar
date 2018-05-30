@@ -30,11 +30,11 @@ class Battalion(object):
             return ""
 
         line = [("\t{} (Warscroll Battalion)".format(self.name()))]
-        line.append("\t\tPoints: {}".format(self.points()))
+        line.append("\t\tTotal Points: {}".format(self.points()))
 
         unitline = []
         for unit in self.units:
-            unitstr = unit.fullstr_battalion()
+            unitstr = unit.fullstr(tabs=2, points=False)
             if len(unitstr) > 0:
                 unitline.append(unitstr)
         line.append("\n".join(sorted(unitline, key=lambda x: re.sub('[^A-Za-z]+', '', x).lower())))
@@ -43,7 +43,7 @@ class Battalion(object):
         return "\n".join(line)
 
     def __repr__(self):
-        return str(self.units)
+        return "{}:{}".format(self.name(),str(self.units))
 
     def __len__(self):
         return len(self.units)
