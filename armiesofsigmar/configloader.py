@@ -8,7 +8,7 @@ RULEBOOK_LATEST="ghb2017"
 DEFAULT_ARMY_SIZE="vanguard"
 
 def load_units(rulebook=RULEBOOK_LATEST, unitlists=["all"], recursive=False):
-    ret = {"units":[], "allies":[]}
+    ret = {"units":[], "allies":[], "battalions": []}
     retdict = {}
     for faction in unitlists:
         filename = os.path.join(SELF_DIR, "units", "{}_{}.yaml".format(rulebook, faction.replace(" ", "_")))
@@ -23,13 +23,14 @@ def load_units(rulebook=RULEBOOK_LATEST, unitlists=["all"], recursive=False):
                         filenamew = os.path.join(SELF_DIR, "units", "warscrolls_{}.yaml".format(sectionname.replace(" ", "_")))
                         with open(filenamew, 'r') as fw:
                             fbook = yaml.load(fw)
-                            fsection = fbook[sectionname]["units"]
-                            for unit in section["units"]:
-                                for funit in fsection:
-                                    if funit["name"] == unit["name"]:
-                                        # print funit["name"]
-                                        unit.update(funit)
-                            ret["units"] = ret["units"] + section["units"]
+                            for sectiontype in ["units", "battalions"]:
+                                fsection = fbook[sectionname].get(sectiontype, [])
+                                for unit in section.get(sectiontype, []):
+                                    for funit in fsection:
+                                        if funit["name"] == unit["name"]:
+                                            # print funit["name"]
+                                            unit.update(funit)
+                                ret[sectiontype] = ret[sectiontype] + section.get(sectiontype,[])
                             if not recursive:
                                 ret["allies"] = ret["allies"] + section["allies"]
         except IOError:

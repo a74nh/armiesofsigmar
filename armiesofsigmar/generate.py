@@ -83,15 +83,14 @@ class ArmyGenerator(object):
 
     def generate_army(self):
         self.finalarmies = []
-        self._generate(Army(self.units_config), 0)
+        self._generate(Army(self.units_config), 0, 0)
         return self.finalarmies
 
-    def _generate(self, army, min_start_index):
-
-        if not army.is_valid(self.rules_config, self.restrict_config, final=False, showfails=self.showfails):
+    def _generate(self, army, min_start_index, battalion_inner_index):
+        if not army.is_valid(self.rules_config, self.restrict_config, self.units_config, final=False, showfails=self.showfails):
             return
 
-        if army.is_valid(self.rules_config, self.restrict_config, final=True, showfails=self.showfails):
+        if army.is_valid(self.rules_config, self.restrict_config, self.units_config, final=True, showfails=self.showfails):
             if self.printarmies == PrintOption.PRINT:
                 print(army)
             if self.printarmies == PrintOption.VERBOSE:
@@ -100,9 +99,15 @@ class ArmyGenerator(object):
             return
 
         for unitid in range(min_start_index, len(army)):
-            army[unitid].inc(1)
-            self._generate(army, unitid)
-            army[unitid].inc(-1)
+            if army[unitid].is_type("battalion"):
+                for battalionid in range(battalion_inner_index, len(army[unitid])):
+                    army[unitid][battalionid].inc(1)
+                    self._generate(army, unitid, battalionid)
+                    army[unitid][battalionid].inc(-1)
+            else:
+                army[unitid].inc(1)
+                self._generate(army, unitid, 0)
+                army[unitid].inc(-1)
 
 
 

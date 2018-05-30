@@ -104,3 +104,10 @@ sylvaneth:
       roles: []
 
   allies : [stormcast eternals, wanderers]
+
+  battalions:
+
+    - name: Free Spirits
+      points: 90
+      roles: [Warscroll Battalion]
+

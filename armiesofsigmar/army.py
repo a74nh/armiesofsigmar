@@ -1,5 +1,6 @@
 import re
 from unit import Unit
+from battalion import Battalion
 from printoption import PrintOption
 import itertools
 
@@ -9,12 +10,20 @@ class Army(object):
         self.units_config = units_config
         self.units = []
         self.allies = []
+        self.battalions = []
+        self.map = {}
         for c in units_config["units"]:
-            self.units.append(Unit(c, "unit"))
+            u = Unit(c, "unit")
+            self.units.append(u)
+            self.map[u.name()] = u
         for c in units_config["allies"]:
-            self.allies.append(Unit(c, "ally"))
+            u = Unit(c, "ally")
+            self.units.append(u)
+            self.map[u.name()] = u
+        for c in units_config["battalions"]:
+            self.battalions.append(Battalion(c, self.map))
         #Combination of all units and allies and battalions
-        self.all = [self.units, self.allies]
+        self.all = [self.units, self.allies, self.battalions]
 
     def __str__(self):
         line = [("{}: ".format(self.points()))]
@@ -30,19 +39,28 @@ class Army(object):
         for unit in self.allies:
             unitstr = str(unit)
             if len(unitstr) > 0:
-                unitline.append(str(unit))
+                unitline.append(unitstr)
         if unitline:
             line.append("[")
             line.append(", ".join(sorted(unitline, key=lambda x: re.sub('[^A-Za-z]+', '', x).lower())))
             line.append("]")
 
-        return " ".join(line)
+        unitline = []
+        for unit in self.battalions:
+            unitstr = str(unit)
+            if len(unitstr) > 0:
+                unitline.append(unitstr)
+        if unitline:
+            line.append(", ")
+            line.append(", ".join(sorted(unitline, key=lambda x: re.sub('[^A-Za-z]+', '', x).lower())))
+
+        return "".join(line)
 
     def __repr__(self):
         return str(self.units)
 
     def __len__(self):
-        return len(self.units) + len(self.allies)
+        return len(self.units) + len(self.allies) + len(self.battalions)
 
     def fullstr(self):
         line = [("Points {}".format(self.points()))]
@@ -68,6 +86,14 @@ class Army(object):
             line.append("Allies:")
             line.append("\n".join(sorted(unitline, key=lambda x: re.sub('[^A-Za-z]+', '', x).lower())))
 
+        unitline = []
+        for unit in self.battalions:
+            unitstr = unit.fullstr()
+            if len(unitstr) > 0:
+                unitline.append(unitstr)
+        if unitline:
+            line.append("\n".join(sorted(unitline, key=lambda x: re.sub('[^A-Za-z]+', '', x).lower())))
+
         line.append("")
         return "\n".join(line)
 
@@ -77,8 +103,10 @@ class Army(object):
         index = index - len(self.units)
         if index < len(self.allies):
             return self.allies[index]
-        else:
-            raise IndexError("index out of range")
+        index = index - len(self.allies)
+        if index < len(self.battalions):
+            return self.battalions[index]
+        raise IndexError("index out of range")
 
     def __setitem__(self,index,item):
         if index < len(self.units):
@@ -87,8 +115,12 @@ class Army(object):
         index = index - len(self.units)
         if index < len(self.allies):
             self.allies[index] = item
-        else:
-            raise IndexError("index out of range")
+            return
+        index = index - len(self.allies)
+        if index < len(self.battalions):
+            self.battalions[index] = item
+            return
+        raise IndexError("index out of range")
 
     def points(self):
         points = 0
@@ -141,7 +173,7 @@ class Army(object):
             return False
         return True
 
-    def is_valid(self, rules_config, restrict_config, final=True, showfails=PrintOption.SILENT):
+    def is_valid(self, rules_config, restrict_config, units_config, final=True, showfails=PrintOption.SILENT):
         
         if not self.__check_min_max("points", self.points(), rules_config["points"], rules_config["points"], restrict_config, final, showfails):
             return False
@@ -207,6 +239,11 @@ class Army(object):
             if rules_config["units"][role]["max"] != -1 and count >rules_config["units"][role]["max"]:
                 if showfails.value > PrintOption.SILENT.value:
                     print "FAIL Role MAX {} {} {} : {}".format(role, rules_config["units"][role]["max"], count, self)
+                return False
+
+        # Check battalions
+        for b in self.battalions:
+            if not b.is_valid(rules_config, restrict_config, units_config, final, showfails):
                 return False
 
         return True

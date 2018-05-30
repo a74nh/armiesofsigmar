@@ -45,6 +45,28 @@ class Unit(object):
                                                     self.bravery()))
         return "\n".join(ret)
 
+
+    def str_battalion(self):
+        if self.count == 0:
+            return ""
+        if self.count > 1:
+            return "{}*{}".format(self.count, self.name())
+        return "{}".format(self.name())
+
+    def fullstr_battalion(self):
+        ret = []
+        if self.count == 0:
+            return ""
+        ret.append("\t\t{} {}".format(self.unitsize(), self.name()))
+        if self.roles():
+            ret.append("\t\t\tRoles: {}".format(", ".join(self.roles())))
+        ret.append("\t\t\tM/W/S/B: {}/{}/{}/{}".format(self.move(),
+                                                    self.wounds_str(),
+                                                    self.save_str(),
+                                                    self.bravery()))
+        return "\n".join(ret)
+
+
     # Increase the multiples of minimum size in the unit
     def inc(self, num):
         self.count = self.count + num

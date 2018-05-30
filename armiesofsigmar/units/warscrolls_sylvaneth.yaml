@@ -128,3 +128,10 @@ sylvaneth:
       wounds: 1
       save: 5
       bravery: 6
+
+  battalions:
+
+    - name: Free Spirits
+      units:
+        Spirit of Durthu : { min: 1, max: 1 }
+        Kurnoth Hunters : { min: 3, max: 3 }
