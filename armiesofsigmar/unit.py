@@ -21,14 +21,14 @@ class Unit(object):
         if self.count == 0:
             return ""
         if self.count > 1:
-            return "{}*{}({})".format(self.count,
+            return "{} {} ({})".format(self.unitsize(),
                                       self.name(),
                                       self.points())
-        return "{}({})".format(self.name(),
+        return "{} ({})".format(self.name(),
                                self.points())
 
     def __repr__(self):
-        return "{}*{}({})".format(self.count,
+        return "{} {} ({})".format(self.unitsize(),
                                   self.name(),
                                   self.points())
 
