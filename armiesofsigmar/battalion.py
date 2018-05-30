@@ -35,7 +35,7 @@ class Battalion(object):
 
         unitline = []
         for unit in self.units:
-            unitstr = unit.fullstr(tabs=2, points=False)
+            unitstr = unit.fullstr(tabs=2)
             if len(unitstr) > 0:
                 unitline.append(unitstr)
         line.append("\n".join(sorted(unitline, key=lambda x: re.sub('[^A-Za-z]+', '', x).lower())))

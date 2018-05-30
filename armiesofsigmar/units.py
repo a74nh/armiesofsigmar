@@ -64,6 +64,7 @@ class Units(object):
             wounds = wounds + unit.total_wounds()
         return wounds
 
+    #TODO: Needs checking and fixing
     def avg_bravery_per_unit(self):
         if self.unitsize() == 0:
             return 0
@@ -72,8 +73,11 @@ class Units(object):
         for unit in self.units:
             count = count + unit.unitsize()
             avg_bravery = avg_bravery + (unit.unitsize() * unit.bravery())
+        if count == 0:
+            return 0
         return avg_bravery / float(count)
 
+    #TODO: Needs checking and fixing
     def avg_save_per_wound(self):
         if self.unitsize() == 0:
             return 0
@@ -82,6 +86,8 @@ class Units(object):
         for unit in self.units:
             count = count + unit.total_wounds()
             avg_save = avg_save + (unit.total_wounds() * unit.save())
+        if count == 0:
+            return 0
         return avg_save / float(count)
 
 
