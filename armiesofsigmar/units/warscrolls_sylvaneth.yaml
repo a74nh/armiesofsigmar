@@ -135,3 +135,45 @@ sylvaneth:
       units:
         Spirit of Durthu : { min: 1, max: 1 }
         Kurnoth Hunters : { min: 3, max: 3 }
+
+    - name: Lords of the Clan
+      units:
+        Treelord Ancient: { min: 2, max: 4 }
+        Treelord: { min: 1, max: 3 }
+
+    - name: Household
+      units:
+        Treelord: { min: 1, max: 1 }
+        Branchwych: { min: 1, max: 1 }
+        Tree-Revenants: { min: 1, max: 1 }
+
+    - name: Forest Folk
+      units:
+        Branchwraith: { min: 1, max: 1 }
+        Dryads: { min: 3, max: 3 }
+
+    - name: Outcasts
+      units:
+        Spite-Revenants: { min: 3, max: 3 }
+
+#TODO:
+# Sylvaneth Wargrove
+# Dreadwood Wargrove
+# Forest Spirit Wargrove
+# Gnarlroot Wargrove
+# Harvestboon Wargrove
+#  Heartwood Wargrove 
+# Ironbark Wargrove 
+#  Oakenbrow Wargrove 
+# Winterleaf Wargrove
+
+    # - name: The Guardians of Alarielle
+    #   units:
+    #     Branchwraith: { min: 1, max: 1 }
+    #     #TODO: No more than 2 Trees total
+    #     Treelord Ancient: { min: 0, max: 2 }
+    #     Treelord: { min: 0, max: 2 }
+    #     Dryads: { min: 2, max: 2 }
+    #     Lord-Castellant: { min: 1, max: 1 }
+    #     Liberators: { min: 2, max: 2 }
+    #     Judicators: { min: 1, max: 1 }

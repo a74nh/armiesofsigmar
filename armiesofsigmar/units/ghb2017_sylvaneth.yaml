@@ -111,3 +111,34 @@ sylvaneth:
       points: 90
       roles: [Warscroll Battalion]
 
+    - name: Lords of the Clan
+      points: 110
+      roles: [Warscroll Battalion]
+
+    - name: Household
+      points: 70
+      roles: [Warscroll Battalion]
+
+    - name: Forest Folk
+      points: 110
+      roles: [Warscroll Battalion]
+
+    - name: Outcasts
+      points: 90
+      roles: [Warscroll Battalion]
+
+#TODO:
+# Sylvaneth Wargrove
+# Dreadwood Wargrove
+# Forest Spirit Wargrove
+# Gnarlroot Wargrove
+# Harvestboon Wargrove
+#  Heartwood Wargrove 
+# Ironbark Wargrove 
+#  Oakenbrow Wargrove 
+# Winterleaf Wargrove
+
+    # - name: The Guardians of Alarielle
+    #   points: 220
+    #   roles: [Warscroll Battalion]
+
