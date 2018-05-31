@@ -8,6 +8,13 @@ SELF_DIR = os.path.dirname(sys.modules[__name__].__file__)
 RULEBOOK_LATEST="ghb2017"
 DEFAULT_ARMY_SIZE="vanguard"
 
+def _mergeDictsOverwriteEmpty(d1, d2):
+    res = d1.copy()
+    for k,v in d2.items():
+        if k not in d1 or d1[k] == '':
+            res[k] = v
+    return res
+
 def load_units(rulebook=RULEBOOK_LATEST, unitlists=["all"], recursive=False):
     ret = {"units":[], "allies":[], "battalions": []}
     retdict = {}
@@ -43,8 +50,7 @@ def load_units(rulebook=RULEBOOK_LATEST, unitlists=["all"], recursive=False):
             for name, config in battalion["units"].iteritems():
                 for u in itertools.chain(ret["units"], ret["allies"]):
                     if u["name"] == name:
-                        config.update(u)
-                        new_units.append(config)
+                        new_units.append(_mergeDictsOverwriteEmpty(config, u))
                         continue
             battalion["units"]=new_units
     # print ret

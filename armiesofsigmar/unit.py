@@ -21,7 +21,7 @@ class Unit(object):
     def __str__(self):
         if self.count == 0:
             return ""
-        if self.unitsize() > 1:
+        if self.count > 1:
             return "{} {} ({})".format(self.unitsize(),
                                       self.name(),
                                       self.points())
@@ -38,7 +38,7 @@ class Unit(object):
         ret = []
         if self.count == 0:
             return ""
-        ret.append("{}{} {}".format(tabs_str, self.unitsize(), self.name()))
+        ret.append("{}{} {} ({} units)".format(tabs_str, self.unitsize(), self.name(), self.count))
         tabs_str = "\t" * (tabs+1)
         if points:
             ret.append("{}Points: {}".format(tabs_str, self.points()))
@@ -55,7 +55,7 @@ class Unit(object):
     def str_battalion(self):
         if self.count == 0:
             return ""
-        if self.unitsize() > 1:
+        if self.count > 1:
             return "{} {}".format(self.unitsize(), self.name())
         return "{}".format(self.name())
 
