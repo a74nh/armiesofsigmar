@@ -110,7 +110,7 @@ class Army(object):
         return True
 
     def is_valid(self, rules_config, restrict_config, final=True, showfails=PrintOption.SILENT):
-        
+
         if not self.__check_min_max("points", self.points(), rules_config["points"], rules_config["points"], restrict_config, final, showfails):
             return False
         if not self.__check_min_max("wounds", self.wounds(), 0, -1, restrict_config, final, showfails):
@@ -120,18 +120,20 @@ class Army(object):
         if not self.__check_min_max("allies", self.allies.points(), 0, rules_config["allies"], restrict_config, final, showfails):
             return False
 
+        #Default battalions to off until better support added
+        if not self.__check_min_max("battalions", self.battalions.num(), 0, 0, restrict_config, final, showfails):
+            return False
+
         for u in self.all:
             if not u.is_valid(restrict_config, final, showfails):
                 return False
 
+
         #Create empty rules dict
         rules_check = {}
-        for rulename, ruleactions in rules_config["units"].iteritems():
-            rules_check[rulename] = 0
-        # Count all roles for models (TODO: ADD BATTALIONS!!)
-        for unit in itertools.chain(self.units, self.allies):
-            for role in unit.roles():
-                rules_check[role] = rules_check.get(role,0) + unit.count
+        for u in self.all:
+            u.sum_roles(rules_check)
+
         # Check roles
         for role, count in rules_check.iteritems():
             # Check role meets min requirements

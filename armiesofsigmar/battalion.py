@@ -135,11 +135,33 @@ class Battalion(object):
     def bravery(self):
         return self.unit_config.get("bravery", 0)
 
+    def sum_roles(self, roles):
+        for unit in self.units:
+            if unit.count > 0:
+                for r in unit.roles():
+                    roles[r] = roles.get(r,0) + unit.count
 
-    def is_valid(self, restrict_config, final=True, showfails=PrintOption.SILENT):
+    def is_valid(self, restrict_battalion, restrict_config, final=True, showfails=PrintOption.SILENT):
+
+        #TODO: Currently only support 1 or 0 instances of a single battalion
+        count = 0
+        if self.unitsize() > 0:
+            count = 1
+
+        # Check unit meets min restriction
+        if final and count < restrict_battalion["min"]:
+            if showfails.value > PrintOption.SILENT.value:
+                print "FAIL MIN restrict {} {} {} : {}".format(self.name(), restrict_battalion["min"], count, self)
+            return False
 
         if self.unitsize() == 0:
             return True
+
+        # Check unit meets max restriction
+        if restrict_battalion["max"] != -1 and count >restrict_battalion["max"]:
+            if showfails.value > PrintOption.SILENT.value:
+                print "FAIL MAX restrict {} {} {} : {}".format(self.name(), restrict_battalion["max"], count, self)
+            return False
 
         #Check units and count up roles
         for unit in self.units:

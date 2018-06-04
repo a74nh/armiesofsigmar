@@ -26,7 +26,7 @@ class Allies(Units):
 
     def is_valid(self, restrict_config, final=True, showfails=PrintOption.SILENT):
         for unit in self.units:
-            restrict_unit = restrict_config["allies"].get(unit.name(), restrict_config["allies"]["__Others"])
+            restrict_unit = self._restrict_unit(restrict_config, unit.name(), "allies")
             restrict_keywords = restrict_config.get("allies_keywords", [])
             if not unit.is_valid(restrict_unit, restrict_keywords, final, showfails):
                 return False

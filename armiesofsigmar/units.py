@@ -76,9 +76,22 @@ class Units(object):
             x = x + (u.total_wounds() * u.save())
         return x
 
+    def _restrict_unit(self, restrict_config, name, unittype):
+        default = { "min": 0, "max": -1 }
+        #TODO: Battalions restrict by default until better support
+        if unittype == "battalions":
+            default = { "min": 0, "max": 0 }
+        return restrict_config[unittype].get(name, restrict_config[unittype].get("__Others", default))
+
+    def sum_roles(self, roles):
+        for unit in self.units:
+            if unit.count > 0:
+                for r in unit.roles():
+                    roles[r] = roles.get(r,0) + unit.count
+
     def is_valid(self, restrict_config, final=True, showfails=PrintOption.SILENT):
         for unit in self.units:
-            restrict_unit = restrict_config["units"].get(unit.name(), restrict_config["units"]["__Others"])
+            restrict_unit = self._restrict_unit(restrict_config, unit.name(), "units")
             restrict_keywords = restrict_config.get("keywords", [])
             if not unit.is_valid(restrict_unit, restrict_keywords, final, showfails):
                 return False

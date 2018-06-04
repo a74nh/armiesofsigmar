@@ -1,31 +1,33 @@
 
+#Note that for maximum values, -1 is used for "no maximum"
+
 #Which rulesets. Use vanguard, battlehost, warhost or freeforall (no restrictions)
 rulebook: ghb2017
 size: vanguard
 
-#List of units to use. Either a grand alliance (eg: order) or faction (eg: sylvaneth)
-unitlists: [sylvaneth]
-
-#Only allow units with the following keywords
-keywords: [SYLVANETH]
-
-#Min and max points allowed for the armies
+#Min and max points allowed for the armies. Defaults to the rulebook.
 min_points: 980
 max_points: 1000
 
-#Min and max wounds allowed for the armies. Use -1 for no maximum.
+#Min and max wounds allowed for the armies. Defaults to allow anything.
 min_wounds: 0
 max_wounds: -1
 
-#Min and max models allowed for the armies. Use -1 for no maximum.
+#Min and max models allowed for the armies. Defaults to allow anything.
 min_models: 0
 max_models: -1
 
-#Min and max ally points allowed for the armies. Use -1 for no maximum.
-min_allies: 0
-max_allies: 0
 
-#Allow or exclude specific named units. Use -1 for no maximum.
+## UNITS
+
+#List of units to use. Either a grand alliance (eg: order) or faction (eg: sylvaneth)
+unitlists: [sylvaneth]
+
+#Each unit must at match least one keyword. Defaults to match anything
+keywords: [SYLVANETH]
+
+#Allow or exclude specific named units. Missing allies use __Others.
+#__Others defaults to allow anything
 units:
   #Allow no more than two getting started sylvaneth boxes (where one of the treelords is an Ancient Treelord)
   Dryads : { min: 0, max: 2 }
@@ -34,11 +36,11 @@ units:
   Treelord : { min: 0, max: 1 }
   Spirit of Durthu : { min: 0, max: 1 }
 
-  #Allow any of these
-  Tree-Revenants : { min: 0, max: -1 }
-  Alarielle the Everqueen : { min: 0, max: -1 }
-  Drycha Hamadreth : { min: 0, max: 0 }
-  Kurnoth Hunters : { min: 0, max: -1 }
+  #Allow a sensible number of these
+  Tree-Revenants : { min: 0, max: 2 }
+  Alarielle the Everqueen : { min: 0, max: 1 }
+  Drycha Hamadreth : { min: 0, max: 1 }
+  Kurnoth Hunters : { min: 0, max: 3 }
 
   #No thanks to these
   Branchwraith : { min: 0, max: 0 }
@@ -49,7 +51,39 @@ units:
   30 Tree-Revenants : { min: 0, max: 0 }
   30 Dryads : { min: 0, max: 0 }
 
-  #Special keyword. Matches all units not listed above.
+  #Special keyword. Matches all units not listed above. Here don't allow anything else not listed above
+  __Others : { min: 0, max: 0 }
+
+
+## ALLIES
+
+#Ally lists are loaded using the ally lists given in the rulebook for the loaded units
+
+#Min and max ally points allowed. Defaults to allow anything.
+min_allies: 0
+max_allies: 0
+
+#Each ally must match at least one keyword. Defaults to match anything
+allies_keywords: [WANDERER]
+
+#Allow or exclude specific named allies. Missing allies use __Others.
+#__Others defaults to allow anything
+allies:
+  #Allow Wildwood Rangers but nothing else
+  Wildwood Rangers : { min: 0, max: -1 }
+  __Others : { min: 0, max: 0 }
+
+
+## Battalions
+
+#Battalion lists are loaded alongside the loaded units
+
+#Min and max number of battalions allowed (not points).
+#Defaults NO BATTALIONS, due to in progress battalion support.
+#Note each battalion will contain multiple units
+min_battalions: 0
+max_battalions: 0
+
+battalions:
+  Free Spirits : { min: 0, max: -1 }
   __Others : { min: 0, max: -1 }
-
-
