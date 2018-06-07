@@ -35,6 +35,18 @@ class ArmyGenerator(object):
                     newallies.append(unit)
             self.units_config["allies"] = newallies
 
+        # Check battalions
+        max_battalions = self.restrict_config.get("max_battalions", 0)
+        if  max_battalions== 0:
+            self.units_config["battalions"] = []
+            if showfails.value > PrintOption.SILENT.value:
+                print "BATTALIONS RESTRICT allies max {}".format(max_battalions)
+        else:
+            newbattalions = []
+            for unit in self.units_config["battalions"]:
+                if self._check_battalion_restrict(unit, showfails):
+                    newbattalions.append(unit)
+            self.units_config["battalions"] = newbattalions
 
     def _check_unit_restrict(self, unit, showfails):
         name = unit.get("name","")
@@ -86,6 +98,9 @@ class ArmyGenerator(object):
             if showfails.value > PrintOption.SILENT.value:
                 print "ALLY RESTRICT Ally Keyword restrict: {} {} {}".format(name, keywords, restrict_keywords)
             return False
+        return True
+
+    def _check_battalion_restrict(self, unit, showfails):
         return True
 
     def generate_army(self):
