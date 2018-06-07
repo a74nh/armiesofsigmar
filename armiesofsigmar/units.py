@@ -44,6 +44,13 @@ class Units(object):
             return
         raise IndexError("index out of range")
 
+    def add(self, name):
+        for u in self.units:
+            if u.name() == name:
+                u.inc(1)
+                return
+        raise KeyError('Unknown unit: {}'.format(name))
+
     def unitsize(self):
         size = 0
         for unit in self.units:

@@ -57,6 +57,16 @@ class Army(object):
             index = index - len(u)
         raise IndexError("index out of range")
 
+    def add(self, name, unittype):
+        if unittype == "unit":
+            self.units.add(name)
+        elif unittype == "ally":
+            self.allies.add(name)
+        elif unittype == "battalion":
+            self.battalions.add(name)
+        else:
+            raise KeyError('Invalid unit type')
+
     def points(self):
         x=0
         for u in self.all:
