@@ -21,7 +21,7 @@ class Unit(object):
     def __str__(self):
         if self.count == 0:
             return ""
-        if self.count > 1:
+        if self.unitsize() > 1:
             return "{} {} ({})".format(self.unitsize(),
                                       self.name(),
                                       self.points())

@@ -131,6 +131,8 @@ class Army(object):
 
         #Create empty rules dict
         rules_check = {}
+        for rulename, ruleactions in rules_config["units"].iteritems():
+            rules_check[rulename] = 0
         for u in self.all:
             u.sum_roles(rules_check)
 
