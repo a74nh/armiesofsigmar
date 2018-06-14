@@ -1,13 +1,14 @@
 
+rulebook: ghb2017
+size: battlehost
 config:
   - sylvaneth
 units:
   - Dryads
-  - Dryads
-  - Dryads
   - Branchwych
   - Treelord Ancient
-  - Treelord
   - Spirit of Durthu
-allies:
-  - Sisters of the Thorn
+  - Alarielle the Everqueen
+  - Kurnoth Hunters
+  - Kurnoth Hunters
+  - Tree-Revenants

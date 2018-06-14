@@ -28,8 +28,12 @@ class Army(object):
     def __len__(self):
         return len(self.units) + len(self.allies) + len(self.battalions)
 
-    def fullstr(self):
-        line = [("Points {}".format(self.points()))]
+    def fullstr(self, rules_config={}):
+        points = self.points()
+        if rules_config:
+            line = [("Points {} [{} to {}]".format(points, rules_config["points"] - points, rules_config["points"]))]
+        else:
+            line = [("Points {}".format(points))]
         line.append("\tWounds: {}, Models: {}, Bravery/Unit: {:.2f}, Save/Wound: {:.2f}+".format(
                                 self.wounds(),
                                 self.unitsize(),
@@ -39,6 +43,7 @@ class Army(object):
             s = u.fullstr()
             if s:
                 line.append(s)
+        line.append("Roles: {}".format(self.sum_roles_str(rules_config)))
         line.append("")
         return "\n".join(line)
 
@@ -109,6 +114,28 @@ class Army(object):
             return 0
         return self._save_mul_wounds_sum() / float(count)
 
+    def sum_roles(self, rules_config={}):
+        r = {}
+        for rulename, ruleactions in rules_config.get("units",{}).iteritems():
+            r[rulename] = 0
+        for u in self.all:
+            u.sum_roles(r)
+        return r
+
+    def sum_roles_str(self, rules_config={}):
+        roles = self.sum_roles(rules_config)
+        line = []
+        for role, count in roles.iteritems():
+            rule=rules_config.get("units",{}).get(role,{})
+            if rule:
+                if rule["max"] == -1:
+                    line.append("{} {} [{}+]".format(count, role, rule["min"]))
+                else:
+                    line.append("{} {} [{}->{}]".format(count, role, rule["min"], rule["max"]))
+            else:
+                line.append("{} {}".format(count, role))
+        return ", ".join(line)
+
     def __check_min_max(self, constraint, current_value, default_min, default_max, restrict_config, final, showfails):
         con_min = restrict_config.get("min_"+constraint, default_min)
         con_max = restrict_config.get("max_"+constraint, default_max)
@@ -119,7 +146,7 @@ class Army(object):
             return False
         return True
 
-    def is_valid(self, rules_config, restrict_config, final=True, showfails=PrintOption.SILENT):
+    def is_valid(self, rules_config, restrict_config={}, final=True, showfails=PrintOption.SILENT):
 
         if not self.__check_min_max("points", self.points(), rules_config["points"], rules_config["points"], restrict_config, final, showfails):
             return False
@@ -138,15 +165,8 @@ class Army(object):
             if not u.is_valid(restrict_config, final, showfails):
                 return False
 
-
-        #Create empty rules dict
-        rules_check = {}
-        for rulename, ruleactions in rules_config["units"].iteritems():
-            rules_check[rulename] = 0
-        for u in self.all:
-            u.sum_roles(rules_check)
-
         # Check roles
+        rules_check = self.sum_roles(rules_config)
         for role, count in rules_check.iteritems():
             # Check role meets min requirements
             if final and count < rules_config["units"][role]["min"]:

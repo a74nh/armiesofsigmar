@@ -3,11 +3,11 @@
 
 #Which rulesets. Use vanguard, battlehost, warhost or freeforall (no restrictions)
 rulebook: ghb2017
-size: vanguard
+size: battlehost
 
 #Min and max points allowed for the armies. Defaults to the rulebook.
-min_points: 980
-max_points: 1000
+min_points: 1980
+max_points: 2000
 
 #Min and max wounds allowed for the armies. Defaults to allow anything.
 min_wounds: 0
@@ -30,17 +30,17 @@ keywords: [SYLVANETH]
 #__Others defaults to allow anything
 units:
   #Allow no more than two getting started sylvaneth boxes (where one of the treelords is an Ancient Treelord)
-  Dryads : { min: 0, max: 2 }
-  Branchwych : { min: 0, max: 2 }
-  Treelord Ancient : { min: 0, max: 2 }
-  Treelord : { min: 0, max: 1 }
+  Dryads : { min: 1, max: 2 }
+  Branchwych : { min: 1, max: 2 }
+  Treelord Ancient : { min: 1, max: 1 }
+  Treelord : { min: 0, max: 0 }
   Spirit of Durthu : { min: 0, max: 1 }
 
   #Allow a sensible number of these
-  Tree-Revenants : { min: 0, max: 2 }
-  Alarielle the Everqueen : { min: 0, max: 1 }
+  Tree-Revenants : { min: 1, max: 2 }
+  Alarielle the Everqueen : { min: 1, max: 1 }
   Drycha Hamadreth : { min: 0, max: 1 }
-  Kurnoth Hunters : { min: 0, max: 3 }
+  Kurnoth Hunters : { min: 2, max: 3 }
 
   #No thanks to these
   Branchwraith : { min: 0, max: 0 }
@@ -60,7 +60,7 @@ units:
 #Ally lists are loaded using the ally lists given in the rulebook for the loaded units
 
 #Min and max ally points allowed. Defaults to allow anything.
-min_allies: 0
+#min_allies: 0
 max_allies: 0
 
 #Each ally must match at least one keyword. Defaults to match anything
@@ -70,7 +70,7 @@ allies_keywords: [WANDERER]
 #__Others defaults to allow anything
 allies:
   #Allow Wildwood Rangers but nothing else
-  Wildwood Rangers : { min: 0, max: -1 }
+  Sisters of the Thorn : { min: 0, max: -1 }
   __Others : { min: 0, max: 0 }
 
 

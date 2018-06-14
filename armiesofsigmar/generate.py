@@ -85,6 +85,13 @@ class ArmyGenerator(object):
     def _check_ally_restrict(self, unit, showfails):
         name = unit.get("name","")
         keywords = unit.get("keywords",[])
+        restrict_unit = self.restrict_config["allies"].get(name, self.restrict_config["allies"]["__Others"])
+
+        # Check unit meets max restriction
+        if restrict_unit["max"] == 0:
+            if showfails.value > PrintOption.SILENT.value:
+                print "ALLY RESTRICT MAX restrict {} {}".format(name, restrict_unit["max"])
+            return False
 
         # Check keyword match. Empty list means allow anything
         match = False
@@ -101,6 +108,16 @@ class ArmyGenerator(object):
         return True
 
     def _check_battalion_restrict(self, unit, showfails):
+
+        restrict_unit = self.restrict_config["battalions"].get(name, self.restrict_config["battalions"]["__Others"])
+        print restrict_unit
+
+        # Check unit meets max restriction
+        if restrict_unit["max"] == 0:
+            if showfails.value > PrintOption.SILENT.value:
+                print "BATTALION RESTRICT MAX restrict {} {}".format(name, restrict_unit["max"])
+            return False
+
         return True
 
     def generate_army(self):
@@ -116,7 +133,7 @@ class ArmyGenerator(object):
             if self.printarmies == PrintOption.PRINT:
                 print(army)
             if self.printarmies == PrintOption.VERBOSE:
-                print(army.fullstr())
+                print(army.fullstr(self.rules_config))
             self.finalarmies.append(copy.deepcopy(army))
             return
 
