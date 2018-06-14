@@ -103,7 +103,7 @@ sylvaneth:
       max: 30
       roles: []
 
-  allies : [stormcast eternals, wanderers]
+  allies : [stormcast eternals, wanderers, idoneth deepkin]
 
   battalions:
 

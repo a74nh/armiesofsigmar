@@ -1,0 +1,83 @@
+
+idoneth deepkin :
+
+  units:
+   - name: Namarti Thralls
+     points: 140
+     min: 10
+     max: 29
+     roles: [Battleline]
+   - name: 30 Namarti Thralls
+     points: 360
+     min: 30
+     max: 30
+     roles: [Battleline]
+   - name: Akhelian Leviadon
+     points: 380
+     min: 1
+     max: 1
+     roles: [Behemoth]
+   - name: Volturnos, High King of the Deep
+     points: 280
+     min: 1
+     max: 1
+     roles: [Leader]
+     unique: True
+   - name: Eidolon of Mathlann, Aspect of the Storm
+     points: 400
+     min: 1
+     max: 1
+     roles: [Leader]
+   - name: Eidolon of Mathlann, Aspect of the Sea
+     points: 440
+     min: 1
+     max: 1
+     roles: [Leader]
+   - name: Akhelian King
+     points: 240
+     min: 1
+     max: 1
+     roles: [Leader]
+   - name: Isharann Tidecaster
+     points: 100
+     min: 1
+     max: 1
+     roles: [Leader]
+   - name: Isharann Soulrender
+     points: 100
+     min: 1
+     max: 1
+     roles: [Leader]
+   - name: Isharann Soulscryer
+     points: 100
+     min: 1
+     max: 1
+     roles: [Leader]
+   - name: Lotann, Warden of the Soul Ledgers
+     points: 100
+     min: 1
+     max: 1
+     roles: [Leader]
+     unique: True
+   - name: Akhelian Allopex
+     points: 140
+     min: 1
+     max: 4
+     roles: []
+   - name: Akhelian Ishlaen Guard
+     points: 140
+     min: 3
+     max: 12
+     roles: [Battleline]
+   - name: Akhelian Morrsarr Guard
+     points: 160
+     min: 3
+     max: 12
+     roles: [Battleline]
+   - name: Namarti Reavers
+     points: 140
+     min: 10
+     max: 20
+     roles: [Battleline]
+
+  allies: [ stormcast eternals, sylvaneth, wanderers ]

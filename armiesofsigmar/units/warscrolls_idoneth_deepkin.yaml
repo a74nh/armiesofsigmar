@@ -1,0 +1,109 @@
+idoneth deepkin :
+
+  units:
+    - name: Namarti Thralls
+      keywords: [ORDER, AELF, IDONETH DEEPKIN, NAMARTI, THRALLS]
+      move: 6
+      wounds: 1 
+      save: 5
+      bravery: 6 
+
+    - name: 30 Namarti Thralls
+      keywords: [ORDER, AELF, IDONETH DEEPKIN, NAMARTI, THRALLS]
+      move: 6
+      wounds: 1 
+      save: 5
+      bravery: 6
+
+    - name: Akhelian Leviadon
+      keywords: [ORDER, AELF, IDONETH DEEPKIN, MONSTER, AKHELIAN, LEVIADON]
+      move: { 0: 12, 4: 10, 7: 9, 10: 8, 14: 7}
+      wounds: 16
+      save: 3
+      bravery: 7
+
+    - name: Volturnos, High King of the Deep
+      keywords: [ORDER, AELF, IDONETH DEEPKIN, AKHELIAN, HERO, AKHELIANKING, VOLTURNOS]
+      move: 13
+      wounds: 8
+      save: 3
+      bravery: 8 
+
+    - name: Eidolon of Mathlann, Aspect of the Storm
+      keywords: [ORDER, AELF, IDONETH DEEPKIN, EIDOLON, HERO, ASPECTOFTHESTORM]
+      move: 12
+      wounds: 12
+      save: 3
+      bravery: 10 
+
+    - name: Eidolon of Mathlann, Aspect of the Sea
+      keywords: [ORDER, AELF, IDONETH DEEPKIN, EIDOLON, HERO, WIZARD, ASPECTOFTHESEA]
+      move: 10
+      wounds: 12
+      save: 3
+      bravery: 10 
+
+    - name: Akhelian King
+      keywords: [ORDER, AELF, IDONETH DEEPKIN, HERO, AKHELIAN, AKHELIANKING]
+      move: 14
+      wounds: 7
+      save: 3
+      bravery: 8
+
+    - name: Isharann Tidecaster
+      keywords: [ORDER, AELF, IDONETH DEEPKIN, ISHARANN, HERO, WIZARD, TIDECASTER]
+      move: 6
+      wounds: 5
+      save: 6
+      bravery: 7
+
+    - name: Isharann Soulrender
+      keywords: [ORDER, AELF, IDONETH DEEPKIN, ISHARANN, HERO, SOULRENDER]
+      move: 6
+      wounds: 5
+      save: 4
+      bravery: 8
+
+    - name: Isharann Soulscryer
+      keywords: [ORDER, AELF, IDONETH DEEPKIN, ISHARANN, HERO, PRIEST, SOULSCRYER]
+      move: 6
+      wounds: 5
+      save: 6
+      bravery: 7
+
+    - name: Lotann, Warden of the Soul Ledgers
+      keywords: [ORDER, AELF, IDONETH DEEPKIN, ISHARANN, SOULWARDEN, HERO, LOTANN]
+      move: 6
+      wounds: 5 
+      save: 6
+      bravery: 7
+
+    - name: Akhelian Allopex
+      keywords: [ORDER, AELF, IDONETH DEEPKIN, AKHELIAN, MONSTER, ALLOPEX]
+      move: 12
+      wounds: 8
+      save: 4
+      bravery: 6 
+
+    - name: Akhelian Ishlaen Guard
+      keywords: [ORDER, AELF, IDONETH DEEPKIN, AKHELIAN, AKHELIANGUARD, ISHLAENGUARD]
+      move: 14
+      wounds: 4
+      save: 4
+      bravery: 6
+
+    - name: Akhelian Morrsarr Guard
+      keywords: [ORDER, AELF, IDONETH DEEPKIN, AKHELIAN, AKHELIANGUARD, MORRSARRGUARD]
+      move: 14
+      wounds: 4
+      save: 4
+      bravery: 6 
+
+    - name: Namarti Reavers
+      keywords: [ORDER, AELF, IDONETH DEEPKIN, NAMARTI, REAVERS]
+      move: 8
+      wounds: 1
+      save: 5
+      bravery: 6 
+
+     
